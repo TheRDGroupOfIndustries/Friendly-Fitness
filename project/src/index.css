@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animation-delay-75 {
+  animation-delay: 0.75s;
+}
+
+#title {
+  position: relative;
+  z-index: 1;
+  display: inline-block; /* Ensure it wraps correctly */
+}
+
+@media screen and (width > 800px) {
+  #title::before {
+    content: "";
+    position: absolute;
+    background: url(https://netizensstore.com/gymfit_theme/html/multipage_3/assets/images/title-bg2.png)
+      no-repeat;
+    background-size: contain;
+    height: 150%;
+    width: 100%;
+    left: -10px;
+    top: -10px;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
