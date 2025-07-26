@@ -147,11 +147,11 @@ const Schedule: React.FC = () => {
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 flex items-center justify-center">
             <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
-            <span className="mr-2">SCHEDULE</span>
+            <span className="mr-2 text-white">SCHEDULE</span>
             {/* <span className="text-orange-500">CHEDULE</span> */}
             <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
           </h1>
-          <h2 className="text-2xl md:text-3xl font-light">
+          <h2 className="text-2xl md:text-3xl font-light text-white">
             BUILDING A COMMUNITY OF ATHLETIC WOMEN
           </h2>
         </div>

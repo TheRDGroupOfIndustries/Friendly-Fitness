@@ -24,6 +24,26 @@
   display: inline-block; /* Ensure it wraps correctly */
 }
 
+#imgcut {
+  position: relative;
+  overflow: visible;
+}
+
+#imgcut::before {
+  /* left: 24px;
+  top: -15px;
+  height: 83px; */
+
+  position: absolute;
+  background-color: #fc7001;
+  content: "";
+  width: 5px;
+  transform: rotate(45deg);
+  height: 150px;
+  left: 35px;
+  top: -33px;
+}
+
 @media screen and (width > 800px) {
   #title::before {
     content: "";
@@ -37,5 +57,17 @@
     top: -10px;
     z-index: 0;
     pointer-events: none;
+  }
+
+  #imgcut::before {
+    left: 15px;
+    top: -8px;
+    height: 55px;
+  }
+}
+
+@media screen and (width < 800px) {
+  #imgcut::before {
+    background: transparent;
   }
 }

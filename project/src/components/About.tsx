@@ -1,8 +1,11 @@
 import React from "react";
 import Img1 from "../assets/IMG-1.jpg";
 import Img2 from "../assets/IMG-2.jpg";
+import { useNavigate } from "react-router-dom";
 
 const About: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-10 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
@@ -62,6 +65,7 @@ const About: React.FC = () => {
 
             <button
               className="mt-6 sm:mt-8 bg-transparent border-2 px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 transform hover:scale-105"
+              onClick={() => navigate("/aboutus")}
               style={{
                 borderColor: "#090E26",
                 color: "#090E26",

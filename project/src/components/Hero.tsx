@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
             </span>
             <span className="text-orange-500">Revolution</span>
             <br />
-            <span className="text-3xl md:text-4xl font-normal">
+            <span className="text-3xl md:text-4xl font-normal text-white">
               FOR ATHLETIC WOMEN
             </span>
           </motion.h1>

@@ -19,12 +19,12 @@ const AboutUs: React.FC = () => {
           <div className="flex flex-col items-center justify-center h-full">
             <div className="flex items-center justify-center mb-2">
               <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
-              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight">
+              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
                 ABOUT US
               </h1>
-              <span className="block w-8 h-1 bg-orange-500 ml-2"></span>
+              <span className="block w-8 h-1 bg-orange-500 ml-2 "></span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-light mt-2">
+            <h2 className="text-2xl md:text-3xl font-light mt-2 text-white">
               BUILDING A COMMUNITY OF ATHLETIC WOMEN
             </h2>
           </div>

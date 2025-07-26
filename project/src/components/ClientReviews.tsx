@@ -42,11 +42,9 @@ const ClientReviews: React.FC = () => (
             id="title"
           >
             <span className="relative z-10">T</span>
-            <span style={{ color: "#090E26" }} className="relative z-10">
-              ESTIMONIAL
-            </span>
-            {/* <span className="absolute -top-4 -left-8 w-16 h-1 transform -rotate-45" style={{ backgroundColor: '#090E26' }}></span>
-            <span className="absolute -bottom-4 -right-8 w-16 h-1 transform -rotate-45" style={{ backgroundColor: '#090E26' }}></span> */}
+            <span className="text-orange-500 relative z-10">ESTIMONIAL</span>
+            {/* <span className="absolute -top-4 -left-8 w-16 h-1 bg-orange-500 transform -rotate-45"></span>
+                <span className="absolute -bottom-4 -right-8 w-16 h-1 bg-orange-500 transform -rotate-45"></span> */}
           </h2>
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
         </div>
@@ -58,32 +56,8 @@ const ClientReviews: React.FC = () => (
       </div>
 
       {/* Testimonials Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid md:grid-cols-2 gap-8">
         {testimonials.map((testimonial, i) => (
-          // <div
-          //   key={i}
-          //   className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center"
-          // >
-          //   <div className="mb-6">
-          //     <div
-          //       className="w-24 h-24 rounded-full border-4 overflow-hidden mx-auto mb-2"
-          //       style={{ borderColor: "#090E26" }}
-          //     >
-          //       <img
-          //         src={testimonial.image}
-          //         alt={testimonial.name}
-          //         className="w-full h-full object-cover"
-          //       />
-          //     </div>
-          //     <div className="text-center font-bold text-lg">
-          //       {testimonial.name}
-          //     </div>
-          //   </div>
-          //   <div className="text-4xl mb-4" style={{ color: "#090E26" }}>
-          //     &ldquo;
-          //   </div>
-          //   <p className="text-gray-700 text-center">{testimonial.review}</p>
-          // </div>
           <div
             key={i}
             style={{
@@ -113,8 +87,8 @@ const ClientReviews: React.FC = () => (
               }}
             >
               <img
-                src={testimonial.image}
-                alt={testimonial.name}
+                src={testimonial?.image}
+                alt="Client"
                 style={{
                   width: "100%",
                   height: "100%",

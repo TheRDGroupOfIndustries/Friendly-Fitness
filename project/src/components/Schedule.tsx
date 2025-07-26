@@ -7,21 +7,21 @@ const Schedule: React.FC = () => {
   const getWorkoutIcon = (workout: string) => {
     switch (workout.toLowerCase()) {
       case "intermediate":
-        return <Dumbbell className="w-8 h-8" style={{ color: "#090E26" }} />;
+        return <Dumbbell className="w-8 h-8" style={{ color: "#fc7001" }} />;
       case "trx":
-        return <Target className="w-8 h-8" style={{ color: "#090E26" }} />;
+        return <Target className="w-8 h-8" style={{ color: "#fc7001" }} />;
       case "spinning":
-        return <Bike className="w-8 h-8" style={{ color: "#090E26" }} />;
+        return <Bike className="w-8 h-8" style={{ color: "#fc7001" }} />;
       case "boot camp":
-        return <Zap className="w-8 h-8" style={{ color: "#090E26" }} />;
+        return <Zap className="w-8 h-8" style={{ color: "#fc7001" }} />;
       case "begginers":
-        return <Users className="w-8 h-8" style={{ color: "#090E26" }} />;
+        return <Users className="w-8 h-8" style={{ color: "#fc7001" }} />;
       case "boxing":
-        return <Activity className="w-8 h-8" style={{ color: "#090E26" }} />;
+        return <Activity className="w-8 h-8" style={{ color: "#fc7001" }} />;
       case "core":
-        return <Target className="w-8 h-8" style={{ color: "#090E26" }} />;
+        return <Target className="w-8 h-8" style={{ color: "#fc7001" }} />;
       default:
-        return <Dumbbell className="w-8 h-8" style={{ color: "#090E26" }} />;
+        return <Dumbbell className="w-8 h-8" style={{ color: "#fc7001" }} />;
     }
   };
 
@@ -164,21 +164,21 @@ const Schedule: React.FC = () => {
               style={
                 selectedPeriod === "AM"
                   ? {
-                      backgroundColor: "#090E26",
+                      backgroundColor: "#fc7001",
                       color: "#fff",
                       boxShadow: "0 4px 24px 0 #090E2620",
                     }
-                  : { color: "#090E26", backgroundColor: "transparent" }
+                  : { color: "#fc7001", backgroundColor: "transparent" }
               }
               onMouseOver={(e) => {
                 if (selectedPeriod !== "AM") {
                   e.currentTarget.style.color = "#fff";
-                  e.currentTarget.style.backgroundColor = "#090E26";
+                  e.currentTarget.style.backgroundColor = "#fc7001";
                 }
               }}
               onMouseOut={(e) => {
                 if (selectedPeriod !== "AM") {
-                  e.currentTarget.style.color = "#090E26";
+                  e.currentTarget.style.color = "#fc7001";
                   e.currentTarget.style.backgroundColor = "transparent";
                 }
               }}
@@ -193,21 +193,21 @@ const Schedule: React.FC = () => {
               style={
                 selectedPeriod === "PM"
                   ? {
-                      backgroundColor: "#090E26",
+                      backgroundColor: "#fc7001",
                       color: "#fff",
                       boxShadow: "0 4px 24px 0 #090E2620",
                     }
-                  : { color: "#090E26", backgroundColor: "transparent" }
+                  : { color: "#fc7001", backgroundColor: "transparent" }
               }
               onMouseOver={(e) => {
                 if (selectedPeriod !== "PM") {
                   e.currentTarget.style.color = "#fff";
-                  e.currentTarget.style.backgroundColor = "#090E26";
+                  e.currentTarget.style.backgroundColor = "#fc7001";
                 }
               }}
               onMouseOut={(e) => {
                 if (selectedPeriod !== "PM") {
-                  e.currentTarget.style.color = "#090E26";
+                  e.currentTarget.style.color = "#fc7001";
                   e.currentTarget.style.backgroundColor = "transparent";
                 }
               }}
@@ -268,7 +268,7 @@ const Schedule: React.FC = () => {
                           </div>
                           <div
                             className="text-xs font-medium"
-                            style={{ color: "#090E26" }}
+                            style={{ color: "#fc7001" }}
                           >
                             ({classItem.trainer})
                           </div>

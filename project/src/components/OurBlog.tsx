@@ -1,27 +1,37 @@
-import React from "react";
-
-const blogPosts = [
-  {
-    image:
-      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&fit=crop&w=800&q=80",
-    title: "Lorem ipsum dolor sit amet, consectetur...",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestib ulum porttitor egestas orci, vinec at velit vestibulum.",
-  },
-  {
-    image:
-      "https://images.pexels.com/photos/2261482/pexels-photo-2261482.jpeg?auto=compress&fit=crop&w=800&q=80",
-    title: "Lorem ipsum dolor sit amet, consectetur...",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestib ulum porttitor egestas orci, vinec at velit vestibulum.",
-  },
-  {
-    image:
-      "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&fit=crop&w=800&q=80",
-    title: "Lorem ipsum dolor sit amet, consectetur...",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestib ulum porttitor egestas orci, vinec at velit vestibulum.",
-  },
-];
+import React, { useEffect, useState } from "react";
+import { client } from "../sanityClient";
+import { useNavigate } from "react-router-dom";
 
 const OurBlog: React.FC = () => {
+  const [blogPosts, setBlogPosts] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "post"] | order(publishedAt desc)[0...6]{
+          _id,
+          title,
+          slug,
+          mainImage{asset->{url}},
+          body
+        }`
+      )
+      .then((data) => setBlogPosts(data))
+      .catch(console.error);
+  }, []);
+
+  const getShortText = (body) => {
+    if (!body) return "";
+    const textBlocks = body
+      .filter((block) => block._type === "block")
+      .map((block) => block.children.map((child) => child.text).join(" "));
+    const combined = textBlocks.join(" ");
+    return combined.length > 100
+      ? combined.slice(0, 100).trim() + "..."
+      : combined;
+  };
+
   return (
     <div className="bg-white min-h-screen flex flex-col items-center pb-24">
       {/* Divider between navigation and header */}
@@ -56,14 +66,15 @@ const OurBlog: React.FC = () => {
           >
             <div className="relative w-full" style={{ aspectRatio: "4/2.3" }}>
               <img
-                src={post.image}
-                alt={post.title}
+                src={post?.mainImage?.asset?.url}
+                alt={post?.title}
                 className="w-full h-full object-cover"
                 style={{
                   clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
                   WebkitClipPath:
                     "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
                   display: "block",
+                  aspectRatio: "16/9",
                 }}
               />
             </div>
@@ -72,13 +83,31 @@ const OurBlog: React.FC = () => {
                 className="font-bold text-base md:text-lg mb-2 text-black"
                 style={{ lineHeight: 1.2 }}
               >
-                {post.title}
+                {post?.title}
               </h4>
-              <p className="text-sm text-gray-700">{post.desc}</p>
+              <p className="text-sm text-gray-700">
+                {getShortText(post?.body)}
+              </p>
             </div>
           </div>
         ))}
       </div>
+
+      <button
+        onClick={() => navigate("/blog")}
+        style={{
+          backgroundColor: "rgb(249 115 22)",
+          color: "white",
+          padding: "1rem 3rem",
+          borderRadius: "50px",
+          border: "none",
+          cursor: "pointer",
+          fontSize: "1.4rem",
+          fontWeight: "bold",
+        }}
+      >
+        View All
+      </button>
     </div>
   );
 };
