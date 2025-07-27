@@ -81,6 +81,7 @@ const BlogDetail = () => {
       console.error("Error loading blog post or comments", err);
     }
   };
+
   useEffect(() => {
     fetchPostAndComments();
   }, [slug]);
@@ -112,6 +113,7 @@ const BlogDetail = () => {
                           className="img-responsive wp-post-image"
                           src={post?.mainImage?.asset?.url}
                           alt={post.title}
+                          style={{ aspectRatio: "16/9" }}
                         />
                       )}
                     </div>
@@ -143,9 +145,7 @@ const BlogDetail = () => {
                             <span>
                               {" "}
                               <i className="fa fa-comments"></i>
-                              <a href="#">
-                                Comments {post.comments?.length || 0}
-                              </a>
+                              <a href="#">Comments {comments?.length || 0}</a>
                             </span>{" "}
                           </p>
                         </div>
@@ -284,14 +284,43 @@ const BlogDetail = () => {
                       <div id="comments">
                         {comments.length > 0 ? (
                           comments.map((comment, index) => (
-                            <div key={index} className="single-comment">
-                              <p>
-                                <strong>{comment.name}</strong> on{" "}
+                            <div
+                              key={index}
+                              className="single-comment"
+                              style={{
+                                padding: "1rem",
+                                border: "1px solid #eeeeee",
+                                borderRadius: "10px",
+                                background: "#f7f7f7",
+                                marginTop: "1rem",
+                              }}
+                            >
+                              <p
+                                style={{
+                                  color: "#fff",
+                                  background: "#ff7101",
+                                  padding: ".6rem 1rem",
+                                  borderRadius: "10px",
+                                  display: "flex",
+                                  gap: "1.4rem",
+                                  alignItems: "end",
+                                }}
+                              >
+                                <strong
+                                  style={{
+                                    fontSize: "1.2rem",
+                                  }}
+                                >
+                                  {comment.name}{" "}
+                                </strong>{" "}
+                                on{" "}
                                 {new Date(
                                   comment.createdAt
                                 ).toLocaleDateString()}
                               </p>
-                              <p>{comment.message}</p>
+                              <p style={{ marginTop: "1rem" }}>
+                                {comment.message}
+                              </p>
                             </div>
                           ))
                         ) : (

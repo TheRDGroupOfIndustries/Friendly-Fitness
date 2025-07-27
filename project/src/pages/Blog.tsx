@@ -268,6 +268,8 @@ const Blog: React.FC = () => {
                   </div>
                 </div>
                 <p className="blog_pera">{getShortText(blog?.body)}</p>
+
+                <br />
                 <div className="read_social col-sm-12 col-xs-12">
                   <div className="read_btm">
                     <div className="left">
