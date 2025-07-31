@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Img3 from "../assets/IMG-3.jpg";
 import Img4 from "../assets/IMG-4.jpg";
@@ -6,11 +6,12 @@ import Img5 from "../assets/IMG-5.jpg";
 import Img6 from "../assets/IMG-6.jpg";
 import Img7 from "../assets/IMG-7.jpg";
 import Img8 from "../assets/IMG-8.jpg";
+import { client } from "../sanityClient";
 
 const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const galleryImages = [
+  const [galleryImages, setGalleryImages] = useState([
     {
       id: 1,
       src: Img3,
@@ -47,7 +48,21 @@ const Gallery: React.FC = () => {
       alt: "Cardio Training",
       category: "Cardio",
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "gallary"] {
+            _id,
+            title,
+            alt,
+            image{asset->{url}}
+          }`
+      )
+      .then((data) => setGalleryImages(data))
+      .catch(console.error);
+  }, []);
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -97,7 +112,7 @@ const Gallery: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((image, index) => (
               <div
-                key={image.id}
+                key={image?._id}
                 className="group relative overflow-hidden rounded-lg cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
@@ -106,8 +121,8 @@ const Gallery: React.FC = () => {
 
                 <div className="relative h-80 overflow-hidden">
                   <img
-                    src={image.src}
-                    alt={image.alt}
+                    src={image?.image?.asset?.url}
+                    alt={image?.alt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
@@ -115,7 +130,7 @@ const Gallery: React.FC = () => {
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-orange-500/80 transition-all duration-300 flex items-center justify-center">
                     <div className="text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <h3 className="text-xl font-bold mb-2">
-                        {image.category}
+                        {image?.category}
                       </h3>
                       <p className="text-sm">Click to view</p>
                     </div>

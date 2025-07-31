@@ -1,33 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Img16 from "../assets/IMG-16.jpg";
 import Img1 from "../assets/IMG-1.jpg";
 import Img2 from "../assets/IMG-2.jpg";
-
-const trainers = [
-  {
-    id: 1,
-    name: "RACHEL ADAM",
-    role: "GYM TRAINER",
-    image: Img16,
-  },
-  {
-    id: 2,
-    name: "KEAF SHEN",
-    role: "GYM TRAINER",
-    image: Img2,
-  },
-  {
-    id: 3,
-    name: "LEFEW D. LOEE",
-    role: "GYM TRAINER",
-    image: Img1,
-  },
-];
+import { client } from "../sanityClient";
 
 const notchSize = 40; // px
 const orangeLineThickness = 6; // px
 
 const Trainers: React.FC = () => {
+  const [trainers, setTrainers] = useState([
+    {
+      id: 1,
+      name: "RACHEL ADAM",
+      role: "GYM TRAINER",
+      image: Img16,
+    },
+    {
+      id: 2,
+      name: "KEAF SHEN",
+      role: "GYM TRAINER",
+      image: Img2,
+    },
+    {
+      id: 3,
+      name: "LEFEW D. LOEE",
+      role: "GYM TRAINER",
+      image: Img1,
+    },
+  ]);
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "trainerinfo"] {
+            _id,
+            name,
+            role,
+            image{asset->{url}}
+          }`
+      )
+      .then((data) => setTrainers(data))
+      .catch(console.error);
+  }, []);
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -94,8 +109,8 @@ const Trainers: React.FC = () => {
                 style={{ borderRadius: 0 }}
               >
                 <img
-                  src={trainer.image}
-                  alt={trainer.name}
+                  src={trainer?.image?.asset?.url}
+                  alt={trainer?.name}
                   className="w-full h-full object-cover"
                   style={{ borderRadius: 0 }}
                 />
@@ -106,10 +121,10 @@ const Trainers: React.FC = () => {
                   className="text-xl font-bold mb-1"
                   style={{ color: "#F97316" }}
                 >
-                  {trainer.name}
+                  {trainer?.name}
                 </h3>
                 <p className="text-gray-600 font-medium text-base">
-                  {trainer.role}
+                  {trainer?.role}
                 </p>
               </div>
             </div>

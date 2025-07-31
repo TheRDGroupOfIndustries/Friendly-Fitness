@@ -1,10 +1,76 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Img1 from "../assets/IMG-1.jpg";
 import Img2 from "../assets/IMG-2.jpg";
 import { useNavigate } from "react-router-dom";
+import { client } from "../sanityClient";
+import BlockContent from "@sanity/block-content-to-react";
 
 const About: React.FC = () => {
+  const [about, setAbout] = useState({});
   const navigate = useNavigate();
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "about"] {
+            _id,
+            image1{asset->{url}},
+            image2{asset->{url}},
+            image3{asset->{url}},
+
+            body
+          }`
+      )
+      .then((data) => setAbout(data[0]))
+      .catch(console.error);
+  }, []);
+
+  console.log(about);
+
+  const serializers = {
+    types: {
+      block: (props: any) => {
+        switch (props.node.style) {
+          case "h1":
+            return (
+              <h1 className="text-4xl font-bold mb-4">{props.children}</h1>
+            );
+          case "h2":
+            return (
+              <h2 className="text-3xl font-semibold mb-3">{props.children}</h2>
+            );
+          case "blockquote":
+            return (
+              <blockquote className="border-l-4 border-orange-500 pl-4 italic my-4">
+                {props.children}
+              </blockquote>
+            );
+          default:
+            return <p className="mb-4">{props.children}</p>; // Default paragraph styling
+        }
+      },
+      // You can add more custom types here, like 'image' if you have images in your block content
+      // image: ({ node }: any) => <img src={urlFor(node).url()} alt={node.alt} />,
+    },
+    list: (props: any) => {
+      if (props.type === "bullet") {
+        return <ul className="list-disc ml-6 mb-4">{props.children}</ul>;
+      }
+      return <ol className="list-decimal ml-6 mb-4">{props.children}</ol>;
+    },
+    listItem: (props: any) => <li className="mb-1">{props.children}</li>,
+    marks: {
+      strong: (props: any) => (
+        <strong className="font-bold">{props.children}</strong>
+      ),
+      em: (props: any) => <em className="italic">{props.children}</em>,
+      link: (props: any) => (
+        <a href={props.mark.href} className="text-orange-500 hover:underline">
+          {props.children}
+        </a>
+      ),
+    },
+  };
 
   return (
     <section className="py-10 sm:py-16 bg-white">
@@ -14,14 +80,16 @@ const About: React.FC = () => {
           <div className="grid grid-cols-2 gap-2 sm:gap-4">
             <div className="space-y-2 sm:space-y-4">
               <img
-                src={Img1}
+                // src={about?.image1 || Img2}
+                src={about?.image1?.asset?.url || Img2}
                 alt="Gym Equipment"
                 className="w-full h-32 xs:h-40 sm:h-64 object-cover rounded-lg shadow-lg"
               />
             </div>
             <div className="space-y-2 sm:space-y-4 pt-4 sm:pt-8">
               <img
-                src={Img2}
+                // src={about?.image1 || Img1}
+                src={about?.image2?.asset?.url || Img1}
                 alt="Athletic Woman Training"
                 className="w-full h-32 xs:h-40 sm:h-64 object-cover rounded-lg shadow-lg"
               />
@@ -48,19 +116,14 @@ const About: React.FC = () => {
             </div>
 
             <div className="space-y-4 sm:space-y-6 text-gray-600 leading-relaxed text-sm xs:text-base">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestib
-                ulum porttitor egestas orci, vitae ullamcorper risus consectetur
-                id. Donec at velit vestibulum, rutrum massa quis, porttitor
-                lorem. Donec et ultrices arcu. In odio augue, hendrerit nec nisl
-                ac, rhoncus gravida mauris.
-              </p>
-
-              <p>
-                Quisque consectetur ligula eu urna dignissim, nec mollis ipsum
-                aliquam. Aliquam non est a ipsum facilisis scelerisque eu sed
-                lectus.
-              </p>
+              {about?.body && (
+                <BlockContent
+                  blocks={about.body}
+                  serializers={serializers}
+                  projectId={client.config().projectId}
+                  dataset={client.config().dataset}
+                />
+              )}
             </div>
 
             <button
