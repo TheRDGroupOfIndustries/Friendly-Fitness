@@ -10,7 +10,7 @@ const token =
 export const client: SanityClient = createClient({
   projectId: "bg45uhs5",
   dataset: "production",
-  useCdn: true,
+  useCdn: false,
   apiVersion: "2023-07-17",
 });
 
