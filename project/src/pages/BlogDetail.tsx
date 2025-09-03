@@ -90,7 +90,7 @@ const BlogDetail = () => {
       <div className="blog_main_sec">
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-8 col-xs-12 blog_left">
+            <div>
               <div className="ft-blog-post">
                 <div className="main-content">
                   <div className="single-blog-post clearfix post-2245 post type-post status-publish format-standard has-post-thumbnail hentry category-cardio-fitness-course-offer category-gym-fitness tag-donec tag-pretium tag-quam tag-ultricies">
