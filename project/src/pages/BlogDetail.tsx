@@ -100,7 +100,6 @@ const BlogDetail = () => {
                     <div className="image">
                       {post?.mainImage && (
                         <img
-                          width="750"
                           height="224"
                           className="img-responsive wp-post-image"
                           src={post?.mainImage?.asset?.url}
