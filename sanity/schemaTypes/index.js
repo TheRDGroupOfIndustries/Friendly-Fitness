@@ -1,6 +1,6 @@
 import blockContent from './blockContent'
 import category from './category'
-import post from './post'
+// import post from './post'
 import author from './author'
 import comment from './comment'
 import blog from './blog'
@@ -13,7 +13,7 @@ import trainerinfo from './trainerinfo'
 import gallary from './gallary'
 
 export const schemaTypes = [
-  post,
+  // post,
   author,
   category,
   comment,

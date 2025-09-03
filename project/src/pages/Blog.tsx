@@ -21,106 +21,12 @@ import { Link } from "react-router-dom";
 import { PortableText } from "@portabletext/react";
 
 const Blog: React.FC = () => {
-  // For collapsible schedule
-  const [openDate, setOpenDate] = useState("05.Jun,2018");
-  const [activeCategory, setActiveCategory] = useState(0);
-
-  const categories = [
-    "Lorem ipsum dolor sit...",
-    "Tur adipiscing elites...",
-    "Egestas orci, vitae ulla...",
-    "Consectetur id onec at...",
-    "Lum rutrum massa quis...",
-    "Donec et ultricies ipsum...",
-    "Aliquam non est a fac...",
-    "Erisque eu sed lectus...",
-    "Erisque eu sed lectus...",
-  ];
-
-  const scheduleData = [
-    {
-      date: "21,November,2016",
-      classes: [
-        {
-          name: "Intermediate",
-          icon: <Dumbbell className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "08:00Am to 09:00Am",
-        },
-        {
-          name: "TRX",
-          icon: <Target className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "09:00Am to 10:00Am",
-        },
-        {
-          name: "Begginer",
-          icon: <Users className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "10:00Am to 11:00Am",
-        },
-        {
-          name: "Boot Camp",
-          icon: <Zap className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "11:00Am to 12:00Am",
-        },
-      ],
-    },
-    {
-      date: "25,Dec,2017",
-      classes: [
-        {
-          name: "Intermediate",
-          icon: <Dumbbell className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "08:00Am to 09:00Am",
-        },
-        {
-          name: "TRX",
-          icon: <Target className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "09:00Am to 10:00Am",
-        },
-        {
-          name: "Begginer",
-          icon: <Users className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "10:00Am to 11:00Am",
-        },
-        {
-          name: "Boot Camp",
-          icon: <Zap className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "11:00Am to 12:00Am",
-        },
-      ],
-    },
-    {
-      date: "05.Jun,2018",
-      classes: [
-        {
-          name: "Intermediate",
-          icon: <Dumbbell className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "08:00Am to 09:00Am",
-        },
-        {
-          name: "TRX",
-          icon: <Target className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "09:00Am to 10:00Am",
-        },
-        {
-          name: "Begginer",
-          icon: <Users className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "10:00Am to 11:00Am",
-        },
-        {
-          name: "Boot Camp",
-          icon: <Zap className="inline w-5 h-5 text-orange-500 mr-2" />,
-          time: "11:00Am to 12:00Am",
-        },
-      ],
-    },
-  ];
-
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const query = `*[_type == "post"] | order(publishedAt desc){
+        const query = `*[_type == "blog"] | order(publishedAt desc){
           _id,
           title,
           publishedAt,
@@ -133,32 +39,14 @@ const Blog: React.FC = () => {
           comments[]{name, message, createdAt}
         }`;
         const data = await client.fetch(query);
-        console.log("Sanity Data", data);
         setBlogs(data);
       } catch (err) {
         console.error("Error fetching blogs:", err);
       }
     };
-
     fetchBlogs();
   }, []);
 
-  const [commentCounts, setCommentCounts] = useState({});
-  useEffect(() => {
-    const fetchAllCommentsCount = async () => {
-      const counts = {};
-      for (const blog of blogs) {
-        const comments = await client.fetch(
-          `*[_type == "comment" && post._ref == $postId]`,
-          { postId: blog._id }
-        );
-        counts[blog._id] = comments.length;
-      }
-      setCommentCounts(counts);
-    };
-
-    if (blogs.length > 0) fetchAllCommentsCount();
-  }, [blogs]);
 
   const getShortText = (body) => {
     if (!body) return "";
@@ -232,18 +120,6 @@ const Blog: React.FC = () => {
                     alt={blog.title}
                     style={{ aspectRatio: "16/9" }}
                   />
-                  {/* <a
-                  className="video-link"
-                  href="https://www.youtube.com/embed/AulGwjIv3m8"
-                  data-width="550"
-                  data-height="350"
-                >
-                  <img
-                    className="blogplay"
-                    src={blog?.mainImage?.asset?.url}
-                    alt={blog.title}
-                  />
-                </a> */}
                   <div className="dd-mm">
                     <span className="date">{day}</span>
                     <br />
@@ -259,10 +135,6 @@ const Blog: React.FC = () => {
                       <span>
                         <i className="fa fa-clock-o" aria-hidden="true"></i>{" "}
                         {formattedTime}
-                      </span>
-                      <span>
-                        <i className="fa fa-comments"></i>
-                        {commentCounts[blog._id] || 0}
                       </span>
                     </p>
                   </div>
@@ -340,123 +212,6 @@ const Blog: React.FC = () => {
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
-            </div>
-          </div>
-          {/* Categories */}
-          <div className="rounded-lg shadow-md overflow-hidden">
-            <div className="bg-orange-500 text-white text-xl font-bold px-6 py-4">
-              CATEGORIES
-            </div>
-            <ul className="bg-[#f5f5f5] divide-y divide-gray-200">
-              {categories.map((cat, idx) => (
-                <li
-                  key={cat}
-                  className={`py-4 flex items-center group cursor-pointer px-8 rounded font-semibold text-base ${
-                    idx === activeCategory ? "text-orange-500" : "text-black"
-                  }`}
-                  onClick={() => setActiveCategory(idx)}
-                >
-                  <span className="text-orange-500 text-lg mr-2">&rsaquo;</span>
-                  {cat}
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* Recent Articles */}
-          <div className="rounded-lg shadow-md overflow-hidden">
-            <div className="bg-orange-500 text-white text-xl font-bold px-6 py-4">
-              RECENT ARTICLES
-            </div>
-            <ul className="bg-white divide-y divide-gray-200">
-              {[
-                "Lorem ipsum dolor sit...",
-                "Tur adipiscing elites...",
-                "Egestas orci, vitae ull...",
-                "Consectetur id onec at...",
-                "Lum rutrum massa quis p...",
-              ].map((cat, idx) => (
-                <li
-                  key={`${cat}${idx}`}
-                  className="py-4 flex items-center justify-between group cursor-pointer hover:bg-orange-50 px-6 rounded"
-                >
-                  <span className="text-gray-700 group-hover:text-orange-500 font-medium">
-                    {cat}
-                  </span>
-                  <span className="text-orange-500 text-lg">&rsaquo;</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* Today's Schedule */}
-          <div className="rounded-lg shadow-md overflow-hidden">
-            <div className="bg-orange-500 text-white text-xl font-bold px-6 py-4">
-              TODAY'S SCHEDULE
-            </div>
-            <ul className="bg-white divide-y divide-gray-200">
-              {scheduleData.map((day) => (
-                <li key={day.date}>
-                  <button
-                    className="w-full flex items-center justify-between px-6 py-4 focus:outline-none"
-                    onClick={() =>
-                      setOpenDate(openDate === day.date ? "" : day.date)
-                    }
-                  >
-                    <span className="text-gray-800 font-medium">
-                      {day.date}
-                    </span>
-                    {openDate === day.date ? (
-                      <ChevronUp className="w-5 h-5 text-orange-500" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-orange-500" />
-                    )}
-                  </button>
-                  {openDate === day.date && (
-                    <div className="px-8 pb-4">
-                      {day.classes.map((cls, idx) => (
-                        <div
-                          key={cls.name + idx}
-                          className="flex items-center text-orange-500 mb-2"
-                        >
-                          {cls.icon}
-                          <span className="font-semibold mr-2">{cls.name}</span>
-                          <span className="text-xs text-orange-400">
-                            - {cls.time}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* Popular Tags */}
-          <div className="rounded-lg shadow-md overflow-hidden">
-            <div className="bg-orange-500 text-white text-xl font-bold px-6 py-4">
-              POPULAR TAGS
-            </div>
-            <div className="bg-white px-6 py-6 flex flex-wrap gap-3">
-              {[
-                "Yoga Center",
-                "Tranning",
-                "Fat Loss",
-                "Weight Gain",
-                "Fitness",
-                "Running",
-                "Gym",
-                "Cardio",
-                "Stretching",
-                "Workout",
-                "Bodybuilding",
-                "Bicep",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-block px-4 py-2 rounded-full bg-gray-100 text-gray-700 text-sm font-semibold cursor-pointer hover:bg-orange-100"
-                >
-                  {tag}
-                </span>
-              ))}
             </div>
           </div>
         </aside>
