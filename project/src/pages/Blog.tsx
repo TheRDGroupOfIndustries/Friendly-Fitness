@@ -35,10 +35,11 @@ const Blog: React.FC = () => {
           mainImage{
             asset->{url}
           },
-          body,
-          comments[]{name, message, createdAt}
+          body
         }`;
         const data = await client.fetch(query);
+        console.log("Blogs", data)
+        
         setBlogs(data);
       } catch (err) {
         console.error("Error fetching blogs:", err);

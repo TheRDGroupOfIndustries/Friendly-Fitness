@@ -34,13 +34,6 @@ export default defineType({
       title: 'Created At',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
-    }),
-    defineField({
-      name: 'post',
-      title: 'Post',
-      type: 'reference',
-      to: [{type: 'post'}],
-      validation: (Rule) => Rule.required(),
-    }),
+    })
   ],
 })
