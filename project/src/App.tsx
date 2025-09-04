@@ -11,6 +11,7 @@ import Blog from "./pages/Blog";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import BlogDetail from "./pages/BlogDetail";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <div className="min-h-screen">
         <Header />
         <Navigation />
+          <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<AboutUs />} />
