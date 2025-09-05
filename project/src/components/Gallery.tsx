@@ -50,19 +50,35 @@ const Gallery: React.FC = () => {
     },
   ]);
 
-  useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "gallary"] {
-            _id,
-            title,
-            alt,
-            image{asset->{url}}
-          }`
-      )
-      .then((data) => setGalleryImages(data))
-      .catch(console.error);
-  }, []);
+  // useEffect(() => {
+  //   client
+  //     .fetch(
+  //       `*[_type == "gallary"] {
+  //           _id,
+  //           title,
+  //           alt,
+  //           image{asset->{url}}
+  //         }`
+  //     )
+  //     .then((data) => setGalleryImages(data))
+  //     .catch(console.error);
+  // }, []);
+
+useEffect(() => {
+  client
+    .fetch(
+      `*[_type == "gallary"] {
+        _id,
+        title,
+        alt,
+        "src": image.asset->url, // normalize field as src
+        category
+      }`
+    )
+    .then((data) => setGalleryImages(data))
+    .catch(console.error);
+}, []);
+
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -121,8 +137,8 @@ const Gallery: React.FC = () => {
 
                 <div className="relative h-80 overflow-hidden">
                   <img
-                    src={image?.image?.asset?.url}
-                    alt={image?.alt}
+                   src={image?.src}
+                   alt={image?.alt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
