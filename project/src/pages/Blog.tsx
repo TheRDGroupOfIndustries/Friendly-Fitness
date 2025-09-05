@@ -296,10 +296,10 @@ const Blog: React.FC = () => {
         />
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight">
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
             BLOG
           </h1>
-          <h2 className="text-2xl md:text-3xl font-light mt-2">
+          <h2 className="text-2xl md:text-3xl font-light mt-2 text-white">
             BUILDING A COMMUNITY OF ATHLETIC WOMEN
           </h2>
         </div>
