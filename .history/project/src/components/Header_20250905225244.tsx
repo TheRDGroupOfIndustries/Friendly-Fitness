@@ -18,7 +18,7 @@ const Header: React.FC = () => {
           </div>
           <div className="flex items-center space-x-1 sm:space-x-2">
             <Mail className="w-4 h-4 text-orange-500" />
-            <span>vikramkhatkar0707@gmail.com</span>
+            <span>vikramkhatk@gmail.com</span>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-4 w-full sm:w-auto">

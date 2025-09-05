@@ -155,7 +155,7 @@ const [formData, setFormData] = useState({
                 href="mailto:fitness@yourdomain.com"
                 className="text-gray-200 hover:underline"
               >
-                vikramkhatkar0707@gmail.com
+                fitness@gmai.com
               </a>
             </div>
 
@@ -174,8 +174,7 @@ const [formData, setFormData] = useState({
                 href="tel:1231234123"
                 className="text-gray-200 hover:underline"
               >
-                
-                +91-931-980-4497
+                123 1234 123
               </a>
             </div>
           </div>

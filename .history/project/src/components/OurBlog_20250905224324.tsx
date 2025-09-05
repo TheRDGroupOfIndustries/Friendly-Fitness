@@ -58,37 +58,41 @@ const OurBlog: React.FC = () => {
         </div>
       </div>
       {/* Blog Images and Content */}
-     {/* Blog Images and Content */}
-<div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 px-4 pb-16">
-  {blogPosts.map((post, idx) => (
-    <div
-      key={idx}
-      className="flex flex-col items-start bg-white shadow-md rounded-lg overflow-hidden"
-    >
-      <div className="relative w-full" style={{ aspectRatio: "4/2.3" }}>
-        <img
-          src={post?.mainImage?.asset?.url}
-          alt={post?.title}
-          className="w-full h-full object-cover"
-          style={{
-            clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
-            WebkitClipPath:
-              "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
-            display: "block",
-            aspectRatio: "16/9",
-          }}
-        />
+      <div className="w-full max-w-7xl flex flex-col md:flex-row justify-center items-stretch gap-8 px-4 pb-16">
+        {blogPosts.map((post, idx) => (
+          <div
+            key={idx}
+            className="flex-1 flex flex-col items-start"
+            style={{ minWidth: 280 }}
+          >
+            <div className="relative w-full" style={{ aspectRatio: "4/2.3" }}>
+              <img
+                src={post?.mainImage?.asset?.url}
+                alt={post?.title}
+                className="w-full h-full object-cover"
+                style={{
+                  clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
+                  WebkitClipPath:
+                    "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
+                  display: "block",
+                  aspectRatio: "16/9",
+                }}
+              />
+            </div>
+            <div className="mt-6 text-black">
+              <h4
+                className="font-bold text-base md:text-lg mb-2 text-black"
+                style={{ lineHeight: 1.2 }}
+              >
+                {post?.title}
+              </h4>
+              <p className="text-sm text-gray-700">
+                {getShortText(post?.body)}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="mt-6 text-black p-4">
-        <h4 className="font-bold text-base md:text-lg mb-2 text-black" style={{ lineHeight: 1.2 }}>
-          {post?.title}
-        </h4>
-        <p className="text-sm text-gray-700">{getShortText(post?.body)}</p>
-      </div>
-    </div>
-  ))}
-</div>
-
 
       <button
         onClick={() => navigate("/blog")}

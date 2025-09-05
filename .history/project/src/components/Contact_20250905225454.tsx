@@ -174,8 +174,7 @@ const [formData, setFormData] = useState({
                 href="tel:1231234123"
                 className="text-gray-200 hover:underline"
               >
-                
-                +91-931-980-4497
+                123 1234 12
               </a>
             </div>
           </div>

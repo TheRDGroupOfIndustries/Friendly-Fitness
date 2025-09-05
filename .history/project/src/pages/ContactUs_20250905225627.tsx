@@ -92,9 +92,9 @@ const [formData, setFormData] = useState({
               <Phone className="w-10 h-10 text-orange-500" />
             </div>
             <div className="text-lg font-semibold text-gray-800">
-              +91-931-980-4497
+              
             </div>
-            <div className="text-md text-gray-600">vikramkhatkar0707@gmail.com</div>
+            <div className="text-md text-gray-600">Finance@domain.com</div>
           </div>
           {/* Hours */}
           <div className="flex flex-col items-center text-center flex-1">

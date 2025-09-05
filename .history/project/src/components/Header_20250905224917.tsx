@@ -14,11 +14,11 @@ const Header: React.FC = () => {
           {/* Logo and Brand removed */}
           <div className="flex items-center space-x-1 sm:space-x-2">
             <Phone className="w-4 h-4 text-orange-500" />
-            <span>+91-931-980-4497</span>
+            <span>123 1234 123</span>
           </div>
           <div className="flex items-center space-x-1 sm:space-x-2">
             <Mail className="w-4 h-4 text-orange-500" />
-            <span>vikramkhatkar0707@gmail.com</span>
+            <span>Fitness@yourdomain.com</span>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-4 w-full sm:w-auto">
@@ -43,7 +43,7 @@ const Header: React.FC = () => {
             </button>
          </Link> 
 
-          <Link to="https://www.linkedin.com/company/the-fitness-evolution-app" >
+          <Link to="https://www.linkedin.com/company/the-fitness-evolution-app" aria-label="Twitter" className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500">
                <button
               aria-label="linkedin"
               className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500"

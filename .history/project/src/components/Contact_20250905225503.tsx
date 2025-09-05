@@ -175,7 +175,7 @@ const [formData, setFormData] = useState({
                 className="text-gray-200 hover:underline"
               >
                 
-                +91-931-980-4497
+                +91-9
               </a>
             </div>
           </div>

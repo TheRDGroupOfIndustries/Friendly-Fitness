@@ -14,11 +14,11 @@ const Header: React.FC = () => {
           {/* Logo and Brand removed */}
           <div className="flex items-center space-x-1 sm:space-x-2">
             <Phone className="w-4 h-4 text-orange-500" />
-            <span>+91-931-980-4497</span>
+            <span>+9</span>
           </div>
           <div className="flex items-center space-x-1 sm:space-x-2">
             <Mail className="w-4 h-4 text-orange-500" />
-            <span>vikramkhatkar0707@gmail.com</span>
+            <span>Fitness@yourdomain.com</span>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-4 w-full sm:w-auto">
