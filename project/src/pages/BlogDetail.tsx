@@ -99,13 +99,18 @@ const BlogDetail = () => {
                     {/* TT-BLOG */}
                     <div className="image">
                       {post?.mainImage && (
-                        <img
-                          height="224"
+                       <img
                           className="img-responsive wp-post-image"
                           src={post?.mainImage?.asset?.url}
                           alt={post.title}
-                          style={{ aspectRatio: "16/9" }}
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            aspectRatio: "16/9",
+                            objectFit: "cover",
+                          }}
                         />
+
                       )}
                     </div>
                     <div className="info">
@@ -150,9 +155,18 @@ const BlogDetail = () => {
                               </p>
                             );
                           }
-                          if (block._type === "image") {
-                            return <img key={index} alt="block-img" />;
+                                                  if (block._type === "image") {
+                            return (
+                              <img
+                                key={index}
+                                src={block.asset?.url}
+                                alt={`blog-img-${index}`}
+                                className="img-responsive"
+                                style={{ width: "100%", height: "auto", margin: "20px 0" }}
+                              />
+                            );
                           }
+
                           return null;
                         })}
                     </div>
