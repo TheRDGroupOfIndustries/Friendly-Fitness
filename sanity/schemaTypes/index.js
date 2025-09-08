@@ -4,6 +4,9 @@ import blog from './blog'
 import about from './about'
 import trainerinfo from './trainerinfo'
 import gallary from './gallary'
+import course from './course'
+import courseCategory from './courseCategory'
+import membership from './membership'
 
 export const schemaTypes = [
   author,
@@ -11,5 +14,8 @@ export const schemaTypes = [
   trainerinfo,
   gallary,
   blockContent,
-  blog
+  blog,
+  course,
+  courseCategory,
+  membership
 ]
