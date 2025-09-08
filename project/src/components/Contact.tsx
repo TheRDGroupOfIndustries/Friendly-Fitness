@@ -155,7 +155,7 @@ const [formData, setFormData] = useState({
                 href="mailto:fitness@yourdomain.com"
                 className="text-gray-200 hover:underline"
               >
-                vikramkhatkar0707@gmail.com
+               fitnessevolution108@gmail.com
               </a>
             </div>
 
