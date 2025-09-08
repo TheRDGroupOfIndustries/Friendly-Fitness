@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { client } from "../sanityClient"; // make sure this file is configured
+
+interface Course {
+  _id?: string;
+  id?: number;
+  title: string;
+  image: string;
+  description: string;
+}
 
 const Courses: React.FC = () => {
-  const courses = [
+  const hardcodedCourses: Course[] = [
     {
       id: 1,
       title: "KETTLEBELL",
@@ -52,6 +61,34 @@ const Courses: React.FC = () => {
     },
   ];
 
+  const [courses, setCourses] = useState<Course[]>([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const data: Course[] = await client.fetch(
+          `*[_type == "course"]{
+            _id,
+            title,
+            "image": image.asset->url,
+            description
+          }`
+        );
+
+        if (data && data.length > 0) {
+          setCourses(data);
+        } else {
+          setCourses(hardcodedCourses); // fallback
+        }
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+        setCourses(hardcodedCourses); // fallback on error
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
   return (
     <section className="py-20 bg-black relative overflow-hidden">
       {/* Background overlay */}
@@ -67,10 +104,7 @@ const Courses: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="relative inline-block">
-            <h2
-              className="text-5xl md:text-7xl font-bold text-white mb-4"
-              id="title"
-            >
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-4">
               OUR COURSES
             </h2>
             <div
@@ -91,7 +125,7 @@ const Courses: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {courses.map((course, index) => (
             <div
-              key={course.id}
+              key={course._id || course.id || index}
               className="group relative overflow-hidden rounded-lg"
             >
               {/* Orange accent line */}

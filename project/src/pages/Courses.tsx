@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-
-const courseCategories = [
-  "ALL",
-  "BODY BUILDING",
-  "WEIGHT LOSS",
-  "WEIGHT GAIN",
-  "WEIGHT LIFTING",
-  "STRETCHING",
-];
-
+import React, { useState, useEffect } from "react";
+import { client } from "../sanityClient";
+import imageUrlBuilder from "@sanity/image-url";
 import { Link } from "react-router-dom";
 
-const courses = [
+const builder = imageUrlBuilder(client);
+function urlFor(source: any) {
+  return builder.image(source);
+}
+
+// Static fallback data
+const staticCourses = [
   {
     title: "KETTLEBELL",
     image:
@@ -52,11 +50,55 @@ const courses = [
 
 const Courses: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
+  const [categories, setCategories] = useState<string[]>(["ALL"]);
+  const [courses, setCourses] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch categories
+    client
+      .fetch(`*[_type == "courseCategory"]{title}`)
+      .then((cats) => {
+        const categoryList = ["ALL", ...cats.map((c: any) => c.title)];
+        setCategories(categoryList);
+      })
+      .catch(() => {
+        setCategories(["ALL"]); // fallback if error
+      });
+
+    // Fetch courses
+    client
+      .fetch(
+        `*[_type == "course"]| order(_createdAt asc){
+          title,
+          image,
+          courseCategory->{
+            title
+          }
+        }`
+      )
+      .then((data) => {
+        if (data.length > 0) {
+          setCourses(data);
+        } else {
+          setCourses(staticCourses); // fallback
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        setCourses(staticCourses); // in case of error also fallback
+        setLoading(false);
+      });
+  }, []);
 
   const filteredCourses =
     selectedCategory === "ALL"
       ? courses
-      : courses.filter((course) => course.category === selectedCategory);
+      : courses.filter(
+          (course) =>
+            course.courseCategory?.title === selectedCategory ||
+            course.category === selectedCategory // fallback for static data
+        );
 
   return (
     <div className="bg-white min-h-screen">
@@ -86,7 +128,7 @@ const Courses: React.FC = () => {
       {/* Filter Buttons */}
       <section className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-wrap gap-4 justify-center mb-12">
-          {courseCategories.map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
@@ -102,29 +144,39 @@ const Courses: React.FC = () => {
         </div>
 
         {/* Courses Grid */}
-        <div className="grid md:grid-cols-3 gap-10">
-          {filteredCourses.map((course, idx) => (
-            <div
-              key={idx}
-              className="group relative overflow-hidden rounded-lg bg-white shadow-md"
-            >
-              {/* Orange accent line */}
-              <div className="absolute top-0 left-0 w-16 h-1 bg-orange-500 z-20"></div>
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+        {loading ? (
+          <p className="text-center text-gray-500">Loading courses...</p>
+        ) : (
+          <div className="grid md:grid-cols-3 gap-10">
+            {filteredCourses.map((course, idx) => (
+              <div
+                key={idx}
+                className="group relative overflow-hidden rounded-lg bg-white shadow-md"
+              >
+                <div className="absolute top-0 left-0 w-16 h-1 bg-orange-500 z-20"></div>
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={
+                      course.image?.asset
+                        ? urlFor(course.image).url()
+                        : course.image
+                    }
+                    alt={course.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-2xl font-bold text-black mb-2 uppercase">
+                    {course.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    {course.courseCategory?.title || course.category}
+                  </p>
+                </div>
               </div>
-              <div className="p-6 text-center">
-                <h3 className="text-2xl font-bold text-black mb-2 uppercase">
-                  {course.title}
-                </h3>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Promo Banner */}
@@ -134,10 +186,10 @@ const Courses: React.FC = () => {
           <br />
           Pay Now &amp; GET 35% Discount
         </h2>
-         <Link to="/aboutus">
-        <button className="mt-4 px-10 py-4 rounded-full border-2 border-white text-white bg-transparent font-bold text-lg hover:bg-white hover:text-orange-500 transition-all duration-300">
-         Read More
-        </button>
+        <Link to="/aboutus">
+          <button className="mt-4 px-10 py-4 rounded-full border-2 border-white text-white bg-transparent font-bold text-lg hover:bg-white hover:text-orange-500 transition-all duration-300">
+            Read More
+          </button>
         </Link>
       </section>
     </div>
