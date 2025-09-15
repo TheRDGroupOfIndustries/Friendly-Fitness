@@ -12,6 +12,7 @@ import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import BlogDetail from "./pages/BlogDetail";
 import { ToastContainer } from "react-toastify";
+import Testimonial from "./pages/Testimonial";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/schedule" element={<SchedulePage />} />
+          {/* <Route path="/schedule" element={<SchedulePage />} /> */}
+          <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/contact" element={<ContactUs />} />
