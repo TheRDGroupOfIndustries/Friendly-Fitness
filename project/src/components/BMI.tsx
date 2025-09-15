@@ -28,7 +28,7 @@ const BMI: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-gray-50">
+    <section className="py-16 sm:py-24 bg-black">
       <div className="max-w-3xl mx-auto px-2 sm:px-4">
         <div className="bg-white rounded-2xl shadow-2xl p-8 sm:p-12">
           <div className="text-center mb-10 sm:mb-14">

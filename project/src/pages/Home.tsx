@@ -4,14 +4,15 @@ import About from '../components/About';
 import Courses from '../components/Courses';
 import VideoSection from '../components/VideoSection';
 import Trainers from '../components/Trainers';
-import Schedule from '../components/Schedule';
-import Gallery from '../components/Gallery';
+// import Schedule from '../components/Schedule';
+// import Gallery from '../components/Gallery';
 import ClientReviews from '../components/ClientReviews';
 import OurBlog from '../components/OurBlog';
 // import GoogleMap from '../components/GoogleMap';
 import Contact from '../components/Contact';
 import Membership from '../components/Membership';
 import BMI from '../components/BMI';
+import FitnessAppPromo from '../components/FitnessAppPromo';
 
 function Home() {
   return (
@@ -35,12 +36,13 @@ function Home() {
       <VideoSection />
       <ClientReviews />
       <Membership />
-      <Schedule />
+      {/* <Schedule /> */}
+      <FitnessAppPromo/>
       <BMI />
       <OurBlog />
       <Contact />
-      <div className="my-12" />
-      <Gallery />
+      
+      {/* <Gallery /> */}
       {/* <GoogleMap /> */}
     </div>
   );
