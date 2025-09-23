@@ -13,7 +13,7 @@ const Courses: React.FC = () => {
   const hardcodedCourses: Course[] = [
     {
       id: 1,
-      title: "KETTLEBELL",
+      title: "CROSSFIT",
       image:
         "https://images.pexels.com/photos/416717/pexels-photo-416717.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
@@ -21,7 +21,7 @@ const Courses: React.FC = () => {
     },
     {
       id: 2,
-      title: "CONJUGATE METHODS",
+      title: "KETTLEBELL WORKOUT",
       image:
         "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
@@ -29,15 +29,15 @@ const Courses: React.FC = () => {
     },
     {
       id: 3,
-      title: "KETTLEBELL",
+      title: "STRENGTH TRAINING",
       image:
-        "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg",
       description:
         "Master the art of kettlebell training for total body conditioning.",
     },
     {
       id: 4,
-      title: "WEIGHTLIFTING",
+      title: "MEDITATION",
       image:
         "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
@@ -45,7 +45,7 @@ const Courses: React.FC = () => {
     },
     {
       id: 5,
-      title: "ADVANCED GYMNASTICS",
+      title: "RECOVERY",
       image:
         "https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
@@ -53,7 +53,55 @@ const Courses: React.FC = () => {
     },
     {
       id: 6,
-      title: "STRIKING",
+      title: "PRANAYAM",
+      image:
+        "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description:
+        "Learn striking techniques while building cardiovascular endurance.",
+    },
+    {
+      id: 7,
+      title: "HATHA YOGA",
+      image:
+        "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description:
+        "Learn striking techniques while building cardiovascular endurance.",
+    },
+    {
+      id: 7,
+      title: "HIIT",
+      image:
+        "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description:
+        "Learn striking techniques while building cardiovascular endurance.",
+    },
+    {
+      id: 8,
+      title: "FUNCTIONAL WORKOUT",
+      image:
+        "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description:
+        "Learn striking techniques while building cardiovascular endurance.",
+    },
+    {
+      id: 9,
+      title: "INDOOR CARDIO",
+      image:
+        "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description:
+        "Learn striking techniques while building cardiovascular endurance.",
+    },
+    {
+      id: 10,
+      title: "BODY MOVEMENTS",
+      image:
+        "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description:
+        "Learn striking techniques while building cardiovascular endurance.",
+    },
+    {
+      id: 11,
+      title: "FAT LOSS/ WEIGHT LOSS",
       image:
         "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:

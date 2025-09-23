@@ -101,9 +101,6 @@ const [formData, setFormData] = useState({
             <div className="w-20 h-20 flex items-center justify-center rounded-full bg-orange-500 mb-4">
               <Clock className="w-10 h-10 text-white" />
             </div>
-            <div className="text-lg font-semibold text-gray-800">
-              10:00am to 6:00pm
-            </div>
             <div className="text-md text-gray-600">Sunday Closed</div>
           </div>
         </div>

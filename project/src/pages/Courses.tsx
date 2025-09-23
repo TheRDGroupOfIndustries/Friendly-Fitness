@@ -11,41 +11,78 @@ function urlFor(source: any) {
 // Static fallback data
 const staticCourses = [
   {
-    title: "KETTLEBELL",
+    title: "CROSSFIT",
     image:
-      "https://images.pexels.com/photos/416717/pexels-photo-416717.jpeg?auto=compress&cs=tinysrgb&w=600",
-    category: "BODY BUILDING",
+      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg",
+    category: "S & C",
   },
   {
-    title: "KETTLEBELL",
+    title: "KETTLEBELL WORKOUT",
     image:
       "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
-    category: "WEIGHT LOSS",
+    category: "S & C",
   },
   {
-    title: "WEIGHTLIFTING",
+    title: "STRENGTH TRAINING",
     image:
-      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
-    category: "WEIGHT LIFTING",
+      "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg",
+    category: "S & C",
   },
   {
-    title: "STRIKING",
+    title: "MEDITATION",
     image:
       "https://images.pexels.com/photos/416717/pexels-photo-416717.jpeg?auto=compress&cs=tinysrgb&w=600",
-    category: "BODY BUILDING",
+    category: "YOGA",
   },
   {
-    title: "CONJUGATE METHODS",
+    title: "RECOVERY",
     image:
       "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
-    category: "WEIGHT GAIN",
+    category: "YOGA",
   },
   {
-    title: "WEIGHTLIFTING",
+    title: "PRANAYAM",
     image:
       "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
-    category: "WEIGHT LIFTING",
+    category: "YOGA",
   },
+  {
+    title: "HATHA YOGA",
+    image:
+      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "YOGA",
+  },
+  {
+    title: "HIIT",
+    image:
+      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "CARDIO",
+  },
+  {
+    title: "FUNCTIONAL WORKOUT",
+    image:
+      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "CARDIO",
+  },
+  {
+    title: "INDOOR CARDIO",
+    image:
+      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "CARDIO",
+  },
+  {
+    title: "BODY MOVEMENTS",
+    image:
+      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "CARDIO",
+  },
+  {
+    title: "FAT LOSS/ WEIGHT LOSS",
+    image:
+      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+    category: "CARDIO",
+  },
+  
 ];
 
 const Courses: React.FC = () => {
@@ -114,12 +151,12 @@ const Courses: React.FC = () => {
             <div className="flex items-center justify-center mb-2">
               <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
-                COURSES
+                FOCUS & COURSES
               </h1>
               <span className="block w-8 h-1 bg-orange-500 ml-2"></span>
             </div>
             <h2 className="text-2xl md:text-3xl font-light mt-2 text-white">
-              BUILDING A COMMUNITY OF ATHLETIC WOMEN
+              Emphasize overall well-being, not just hitting a target weight.
             </h2>
           </div>
         </div>
