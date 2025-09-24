@@ -103,16 +103,6 @@ const Footer = () => {
                 <Mail className="w-4 h-4 mr-3 text-orange-500 flex-shrink-0" />
                 <span className="text-sm">fitnessevolution108@gmail.com</span>
               </div>
-              <div className="flex items-start text-gray-300">
-                <MapPin className="w-4 h-4 mr-3 text-orange-500 flex-shrink-0 mt-0.5" />
-                <span className="text-sm">123 GYM STREET, FITCITY, 456789</span>
-              </div>
-              <div className="flex items-center text-gray-300">
-                <Clock className="w-4 h-4 mr-3 text-orange-500 flex-shrink-0" />
-                <span className="text-sm">
-                  Mon-Fri: 5AM-10PM <br /> Sat-Sun: 6AM-8PM
-                </span>
-              </div>
             </div>
           </div>
 
@@ -126,8 +116,10 @@ const Footer = () => {
                 { name: "Home", path: "/" },
                 { name: "About Us", path: "/aboutus" },
                 { name: "Courses", path: "/courses" },
-                { name: "Group Classes", path: "/courses" },
+                { name: "Testimonial", path: "/testimonial" },
                 { name: "Blog", path: "/blog" },
+                { name: "Contact Us", path: "/contact" },
+
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -151,14 +143,18 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
+                "CrossFit",
+                "Kettlebell Workout",
                 "Strength Training",
-                "Cardio Workouts",
-                "Yoga & Pilates",
-                "Nutrition Coaching",
-                "Weight Loss Programs",
-                "Muscle Building",
-                "Functional Training",
-                "Recovery & Wellness",
+                "Meditation",
+                "Recovery",
+                "Pranayam",
+                "Hatha Yoga",
+                "HIIT",
+                "Functional Workout",
+                "Indoor Cardio",
+                "Body Movements",
+                "Fat loss/ weight loss"
               ].map((service) => (
                 <li key={service}>
                   <Link
@@ -217,8 +213,6 @@ const Footer = () => {
                     icon: Linkedin,
                     link: "https://www.linkedin.com/company/the-fitness-evolution-app",
                   },
-                  { icon: Twitter, link: "#" },
-                  { icon: Youtube, link: "#" },
                 ].map(({ icon: Icon, link }, i) => (
                   <a
                     key={i}
@@ -280,16 +274,16 @@ const Footer = () => {
             {/* Legal Links */}
             <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
               <Link
-                to="#"
+                to="/privacypolicy"
                 className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
               >
                 Privacy Policy
               </Link>
               <Link
-                to="#"
+                to="t&c"
                 className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
               >
-                Terms of Service
+                Terms & Conditions
               </Link>
             </div>
           </div>

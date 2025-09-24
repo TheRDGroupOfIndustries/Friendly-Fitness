@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Calendar, Trophy, Users, Dumbbell } from "lucide-react";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { FaApple } from "react-icons/fa";
-
+import PhoneScreen from "../assets/images/PhoneScreen.jpeg"
 const FitnessAppPromo: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -153,7 +153,7 @@ const FitnessAppPromo: React.FC = () => {
                 {/* Phone Screen */}
                 <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden">
                   <img
-                    src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600"
+                   src={PhoneScreen}
                     alt="Phone screen content"
                     className="w-full h-full object-cover"
                   />

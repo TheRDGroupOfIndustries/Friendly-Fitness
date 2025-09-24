@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Phone, Clock } from "lucide-react";
+import {  Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -95,13 +95,6 @@ const [formData, setFormData] = useState({
               +91-931-980-4497
             </div>
             <div className="text-md text-gray-600">fitnessevolution108@gmail.com</div>
-          </div>
-          {/* Hours */}
-          <div className="flex flex-col items-center text-center flex-1">
-            <div className="w-20 h-20 flex items-center justify-center rounded-full bg-orange-500 mb-4">
-              <Clock className="w-10 h-10 text-white" />
-            </div>
-            <div className="text-md text-gray-600">Sunday Closed</div>
           </div>
         </div>
       </section>

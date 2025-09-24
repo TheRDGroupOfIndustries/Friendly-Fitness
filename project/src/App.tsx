@@ -6,13 +6,14 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import AboutUs from "./pages/AboutUs";
 import CoursesPage from "./pages/Courses";
-import SchedulePage from "./pages/Schedule";
 import Blog from "./pages/Blog";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import BlogDetail from "./pages/BlogDetail";
 import { ToastContainer } from "react-toastify";
 import Testimonial from "./pages/Testimonial";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/T&C";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
+          <Route path="/t&c" element={<TermsAndConditions/>}/>
         </Routes>
         <Footer />
         <ScrollToTop />

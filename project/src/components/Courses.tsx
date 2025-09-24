@@ -171,39 +171,46 @@ const Courses: React.FC = () => {
 
         {/* Courses Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {courses.map((course, index) => (
-            <div
-              key={course._id || course.id || index}
-              className="group relative overflow-hidden rounded-lg"
-            >
-              {/* Orange accent line */}
-              <div className="absolute top-0 left-0 w-12 sm:w-16 h-1 bg-orange-500 z-20"></div>
+  {courses.slice(0, 6).map((course, index) => (
+    <div
+      key={course._id || course.id || index}
+      className="group relative overflow-hidden rounded-lg"
+    >
+      {/* Orange accent line */}
+      <div className="absolute top-0 left-0 w-12 sm:w-16 h-1 bg-orange-500 z-20"></div>
 
-              {/* Course Image */}
-              <div className="relative h-40 xs:h-56 sm:h-80 overflow-hidden">
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
+      {/* Course Image */}
+      <div className="relative h-40 xs:h-56 sm:h-80 overflow-hidden">
+        <img
+          src={course.image}
+          alt={course.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
 
-                {/* Course Title Overlay */}
-                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
-                  <h3 className="text-lg sm:text-2xl font-bold text-white mb-1 sm:mb-2">
-                    {course.title}
-                  </h3>
-                  <p className="text-gray-200 text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {course.description}
-                  </p>
-                </div>
-              </div>
-
+        {/* Course Title Overlay */}
+        <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+          <h3 className="text-lg sm:text-2xl font-bold text-white mb-1 sm:mb-2">
+            {course.title}
+          </h3>
+          <p className="text-gray-200 text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {course.description}
+          </p>
+        </div>
+      </div>
               {/* Hover Effect */}
               <div className="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/10 transition-colors duration-300"></div>
             </div>
           ))}
         </div>
+        <div className="flex justify-center mt-12">
+  <a
+    href="/courses"
+    className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition duration-300"
+  >
+    View All Courses
+  </a>
+</div>
       </div>
     </section>
   );
