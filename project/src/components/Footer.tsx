@@ -235,7 +235,7 @@ const Footer = () => {
               </h4>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="#"
+                  href="https://play.google.com/store/apps/details?id=com.fitness.evolution"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-40 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
@@ -247,7 +247,7 @@ const Footer = () => {
                   />
                 </a>
                 <a
-                  href="#"
+                  href="https://apps.apple.com/in/app/fitness-evolution/id6747019076"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-40 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"

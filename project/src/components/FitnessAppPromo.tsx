@@ -1,14 +1,49 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Trophy, Users, Dumbbell } from "lucide-react";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { FaApple } from "react-icons/fa";
-import PhoneScreen from "../assets/images/PhoneScreen.jpeg"
-const FitnessAppPromo: React.FC = () => {
+import PhoneScreen from "../assets/images/PhoneScreen.jpeg";
+
+// Note: The original relative import for PhoneScreen has been replaced with a placeholder URL 
+// to ensure the component is self-contained and runnable in a single file environment.
+
+const FitnessAppPromo = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
+  // Handler for the "Join the family" button
+  const handleJoin = () => {
+    if (phoneNumber.length > 5) {
+      console.log(`Sending download link to: ${phoneNumber}`);
+      // In a real app, you would integrate a backend service here
+    } else {
+      console.log("Please enter a valid phone number.");
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-visible">
+    <section className="relative min-h-screen flex items-center justify-center overflow-visible font-inter">
+      {/* Load Tailwind CSS from CDN for styling consistency */}
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+          .font-inter {
+            font-family: 'Inter', sans-serif;
+          }
+          /* Custom style to ensure the interactive elements are touch-friendly */
+          button, a {
+            min-height: 48px;
+            min-width: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+        `}
+      </style>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
       {/* Fixed Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -95,15 +130,24 @@ const FitnessAppPromo: React.FC = () => {
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 placeholder="Enter your Phone number"
-                className="flex-1 px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                className="flex-1 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
               />
-              <button className="px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black/50 whitespace-nowrap">
+              <button 
+                onClick={handleJoin}
+                className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black/50 whitespace-nowrap"
+              >
                 Join the family
               </button>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex items-center space-x-3 bg-black/50 backdrop-blur-sm hover:bg-black/70 text-white px-6 py-3 rounded-lg border border-white/20 transition-all duration-300 transform hover:scale-105">
+              {/* Google Play Button - Now a link */}
+              <a
+                href="https://play.google.com/store/apps/details?id=com.fitness.evolution"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 bg-black/50 backdrop-blur-sm hover:bg-black/70 text-white px-6 py-3 rounded-lg border border-white/20 transition-all duration-300 transform hover:scale-105 "
+              >
                 <IoLogoGooglePlaystore
                   className="w-8 h-8"
                   fill="currentColor"
@@ -112,15 +156,21 @@ const FitnessAppPromo: React.FC = () => {
                   <div className="text-xs text-gray-300">ANDROID APP ON</div>
                   <div className="text-lg font-semibold">Google Play</div>
                 </div>
-              </button>
+              </a>
 
-              <button className="flex items-center space-x-3 bg-black/50 backdrop-blur-sm hover:bg-black/70 text-white px-6 py-3 rounded-lg border border-white/20 transition-all duration-300 transform hover:scale-105">
+              {/* App Store Button - Now a link with sm:-ml-2 for left shift */}
+              <a
+                href="https://apps.apple.com/in/app/fitness-evolution/id6747019076"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 bg-black/50 backdrop-blur-sm hover:bg-black/70 text-white px-6 py-3 rounded-lg border border-white/20 transition-all duration-300 transform hover:scale-105 sm:-ml-2 lg:ml-9"
+              >
                 <FaApple className="w-8 h-8" />
                 <div className="text-left">
                   <div className="text-xs text-gray-300">Download on the</div>
                   <div className="text-lg font-semibold">App Store</div>
                 </div>
-              </button>
+              </a>
             </div>
           </motion.div>
         </div>
