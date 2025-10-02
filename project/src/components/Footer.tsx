@@ -60,18 +60,15 @@
 
 // export default Footer;
 
-import React from "react";
 import { Link } from "react-router-dom";
 import {
   Facebook,
   Instagram,
   Linkedin,
-  Twitter,
-  Youtube,
+  
+
   Mail,
   Phone,
-  MapPin,
-  Clock,
   ChevronRight,
 } from "lucide-react";
 
@@ -82,7 +79,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 flex flex-col">
             <div className="mb-6">
               <h2 className="text-2xl lg:text-3xl font-bold">
                 <span className="text-orange-500">Fitness</span>
@@ -102,16 +99,16 @@ const Footer = () => {
               <div className="flex items-center text-gray-300">
                 <Mail className="w-4 h-4 mr-3 text-orange-500 flex-shrink-0" />
                 <span className="text-sm">fitnessevolution108@gmail.com</span>
-              </div>
+  ,            </div>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="flex flex-col h-full">
             <h3 className="text-lg font-semibold mb-6 text-white">
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 mb-2">
               {[
                 { name: "Home", path: "/" },
                 { name: "About Us", path: "/aboutus" },
@@ -119,7 +116,6 @@ const Footer = () => {
                 { name: "Testimonial", path: "/testimonial" },
                 { name: "Blog", path: "/blog" },
                 { name: "Contact Us", path: "/contact" },
-
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -137,11 +133,11 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="flex flex-col h-full">
             <h3 className="text-lg font-semibold mb-6 text-white">
               Our Services
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 mb-2">
               {[
                 "CrossFit",
                 "Kettlebell Workout",
@@ -154,7 +150,7 @@ const Footer = () => {
                 "Functional Workout",
                 "Indoor Cardio",
                 "Body Movements",
-                "Fat loss/ weight loss"
+                "Fat loss/ weight loss",
               ].map((service) => (
                 <li key={service}>
                   <Link
