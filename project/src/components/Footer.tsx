@@ -59,14 +59,11 @@
 // };
 
 // export default Footer;
-
 import { Link } from "react-router-dom";
 import {
   Facebook,
   Instagram,
   Linkedin,
-  
-
   Mail,
   Phone,
   ChevronRight,
@@ -75,40 +72,35 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Company Info */}
-          <div className="lg:col-span-1 flex flex-col">
-            <div className="mb-6">
-              <h2 className="text-2xl lg:text-3xl font-bold">
-                <span className="text-orange-500">Fitness</span>
-                <span className="text-white"> Evolution</span>
-              </h2>
-            </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Transform your body and mind with our expert-led fitness programs.
-              Join thousands who've achieved their fitness goals with us.
+          <div>
+            <h2 className="text-2xl font-bold mb-4">
+              <span className="text-orange-500">Fitness</span>
+              <span className="text-white"> Evolution</span>
+            </h2>
+            <p className="text-gray-400 mb-5 text-sm leading-relaxed">
+              Transform your body and mind with our expert-led programs.
+              Thousands have achieved their goals with us.
             </p>
-            {/* Contact Info */}
-            <div className="space-y-3">
+            <div className="space-y-2 text-sm">
               <div className="flex items-center text-gray-300">
-                <Phone className="w-4 h-4 mr-3 text-orange-500 flex-shrink-0" />
-                <span className="text-sm">+91-931-980-4497</span>
+                <Phone className="w-4 h-4 mr-3 text-orange-500" />
+                +91-931-980-4497
               </div>
               <div className="flex items-center text-gray-300">
-                <Mail className="w-4 h-4 mr-3 text-orange-500 flex-shrink-0" />
-                <span className="text-sm">fitnessevolution108@gmail.com</span>
-  ,            </div>
+                <Mail className="w-4 h-4 mr-3 text-orange-500" />
+                fitnessevolution108@gmail.com
+              </div>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col h-full">
-            <h3 className="text-lg font-semibold mb-6 text-white">
-              Quick Links
-            </h3>
-            <ul className="space-y-3 mb-2">
+          <div className="">
+            <h3 className="text-lg text-white font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
               {[
                 { name: "Home", path: "/" },
                 { name: "About Us", path: "/aboutus" },
@@ -120,10 +112,10 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-gray-300 hover:text-orange-500 transition-colors duration-200 flex items-center group text-sm"
+                    className="flex items-center group text-sm text-gray-400 hover:text-orange-500 transition"
                   >
-                    <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-200">
+                    <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition" />
+                    <span className="group-hover:translate-x-1 transition">
                       {link.name}
                     </span>
                   </Link>
@@ -132,12 +124,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
-          <div className="flex flex-col h-full">
-            <h3 className="text-lg font-semibold mb-6 text-white">
-              Our Services
-            </h3>
-            <ul className="space-y-3 mb-2">
+          {/* Services - Two Columns */}
+          <div>
+            <h3 className="text-lg text-white font-semibold mb-4">Our Services</h3>
+            <div className="grid grid-cols-2 gap-2">
               {[
                 "CrossFit",
                 "Kettlebell Workout",
@@ -150,51 +140,47 @@ const Footer = () => {
                 "Functional Workout",
                 "Indoor Cardio",
                 "Body Movements",
-                "Fat loss/ weight loss",
+                "Fat Loss / Weight Loss",
               ].map((service) => (
-                <li key={service}>
-                  <Link
-                    to="/courses"
-                    className="text-gray-300 hover:text-orange-500 transition-colors duration-200 flex items-center group text-sm"
-                  >
-                    <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-200">
-                      {service}
-                    </span>
-                  </Link>
-                </li>
+                <Link
+                  key={service}
+                  to="/courses"
+                  className="flex items-center group text-sm text-gray-400 hover:text-orange-500 transition"
+                >
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition" />
+                  <span className="group-hover:translate-x-1 transition">
+                    {service}
+                  </span>
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
+        </div>
 
-          {/* Newsletter & Social */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">
-              Stay Connected
-            </h3>
-            <p className="text-gray-300 mb-4 text-sm">
-              Subscribe to our newsletter for fitness tips, workout plans, and
-              exclusive offers.
-            </p>
-            {/* Newsletter Signup */}
-            <div className="mb-8">
+        {/* Stay Connected - Bottom Section */}
+        <div className="mt-12 border-t border-gray-800 pt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Newsletter */}
+            <div>
+              <h3 className="text-lg text-white font-semibold mb-3">Stay Connected</h3>
+              <p className="text-gray-400 mb-4 text-sm">
+                Subscribe to our newsletter for fitness tips & offers.
+              </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm"
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 text-sm"
                 />
-                <button className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 text-sm whitespace-nowrap">
+                <button className="px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-medium text-sm transition">
                   Subscribe
                 </button>
               </div>
             </div>
 
             {/* Social Media */}
-            <div className="mb-6">
-              <h4 className="text-sm font-semibold mb-4 text-white">
-                Follow Us
-              </h4>
+            <div>
+              <h4 className="text-lg text-white font-semibold mb-3">Follow Us</h4>
               <div className="flex space-x-4">
                 {[
                   {
@@ -213,10 +199,9 @@ const Footer = () => {
                   <a
                     key={i}
                     href={link}
-                    aria-label="Social Link"
-                    className="w-10 h-10 bg-gray-800 hover:bg-orange-500 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 hover:bg-orange-500 rounded-lg flex items-center justify-center transition transform hover:scale-110"
                   >
                     <Icon className="w-5 h-5" />
                   </a>
@@ -226,62 +211,48 @@ const Footer = () => {
 
             {/* Download Apps */}
             <div>
-              <h4 className="text-sm font-semibold mb-4 text-white">
-                Download Our App
-              </h4>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <h4 className="text-lg text-white font-semibold mb-3">Download Our App</h4>
+              <div className="flex gap-3 flex-wrap">
                 <a
                   href="https://play.google.com/store/apps/details?id=com.fitness.evolution"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-40 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+                  className="w-36 hover:scale-105 transition-transform"
                 >
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
                     alt="Get it on Google Play"
-                    className="w-full h-auto"
                   />
                 </a>
                 <a
                   href="https://apps.apple.com/in/app/fitness-evolution/id6747019076"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-40 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+                  className="w-36 hover:scale-105 transition-transform"
                 >
                   <img
                     src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                     alt="Download on the App Store"
-                    className="w-full h-auto"
                   />
                 </a>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm text-center md:text-left">
-              © 2025 Fitness Evolution. All rights reserved.
-            </div>
-            {/* Legal Links */}
-            <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
-              <Link
-                to="/privacypolicy"
-                className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="t&c"
-                className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
-              >
-                Terms & Conditions
-              </Link>
-            </div>
+        {/* Bottom Bar */}
+        <div className="mt-10 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 gap-4">
+          <p>© 2025 Fitness Evolution. All rights reserved.</p>
+          <div className="flex space-x-6">
+            <Link
+              to="/privacypolicy"
+              className="hover:text-orange-500 transition"
+            >
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="hover:text-orange-500 transition">
+              Terms & Conditions
+            </Link>
           </div>
         </div>
       </div>
@@ -290,3 +261,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
