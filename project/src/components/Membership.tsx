@@ -14,11 +14,7 @@ const plans: Plan[] = [
     id: 1,
     name: "Basic",
     price: "₹0 / Free",
-    features: [
-      "1 Trial Session",
-      "Access to Gym Equipment",
-      "Locker Room Access",
-    ],
+    features: [" 1 Trial Access", "Limited Features", "Community Support"],
     cta: "Choose Basic",
   },
   {
@@ -26,9 +22,9 @@ const plans: Plan[] = [
     name: "Standard",
     price: "₹12k / month",
     features: [
-      "15 Sessions & Basic features",
-      "Unlimited Group Classes",
-      "Free Fitness Assessment",
+      "Full Access to Core Features",
+      "Priority Support",
+      "Free Onboarding & Setup",
     ],
     cta: "Choose Standard",
     highlight: true,
@@ -38,9 +34,9 @@ const plans: Plan[] = [
     name: "Premium",
     price: "₹30k / 3 months",
     features: [
-      "45 Sessions & Standard features",
-      "Personal Trainer (15 sessions/mo)",
-      "Nutrition Consultation",
+      "Standard Features + Advanced Tools",
+      "Dedicated Account Manager",
+      "Exclusive Resources & Consultations",
     ],
     cta: "Choose Premium",
   },
@@ -88,9 +84,7 @@ const Membership: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <button
-                className="px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 border-2 border-white hover:bg-white hover:text-blue-950"
-              >
+              <button className="px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 border-2 border-white hover:bg-white hover:text-blue-950">
                 {plan.cta}
               </button>
             </div>
