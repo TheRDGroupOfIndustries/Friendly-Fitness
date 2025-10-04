@@ -127,8 +127,8 @@ const AboutUs: React.FC = () => {
                 ABOUT US
               </h2>
             </div>
-            <h3 className="text-2xl md:text-3xl font-light text-gray-800 mb-4">
-              THE BEST GYM
+            <h3 className="text-2xl md:text-3xl font-light text-gray-800 mb-4 uppercase">
+             Best online fitness platform
             </h3>
           </div>
           <div className="space-y-6 text-gray-600 leading-relaxed">

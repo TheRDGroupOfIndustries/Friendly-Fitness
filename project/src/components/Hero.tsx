@@ -27,55 +27,55 @@ const Hero: React.FC = () => {
           backgroundImage: `url(${gymBackgrounds[current]})`,
         }}
       >
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/50 sm:bg-black/60"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center text-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="text-white" id="title">
-              Fitness{" "}
-            </span>
+            <span className="text-white">Fitness </span>
             <span className="text-orange-500">Revolution</span>
             <br />
-            <span className="text-3xl md:text-4xl font-normal text-white">
+            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white">
               FOR ATHLETIC WOMEN
             </span>
           </motion.h1>
+
           <motion.p
-            className="text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed"
+            className="text-sm sm:text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            We Offer As Well Hardcore Strength Machines, Curve Treadmills,
-            Boxing Studio, TRX, And Spinning.
+            We Offer Hardcore Strength Machines, Curve Treadmills, Boxing
+            Studio, TRX, And Spinning.
           </motion.p>
+
           <motion.button
-            className="bg-transparent border-2 border-white text-white px-12 py-4 rounded-full text-lg font-semibold hover:bg-orange-500 hover:border-orange-500 transition-all duration-300 transform hover:scale-105"
+            className="bg-transparent border-2 border-white text-white px-8 sm:px-12 py-3 sm:py-4 rounded-full text-sm sm:text-lg font-semibold hover:bg-orange-500 hover:border-orange-500 transition-all duration-300 transform hover:scale-105"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-           <Link to="/courses" className=" hover:text-orange-500">
-            JOIN NOW 
-          </Link>
+            <Link to="/courses" className="hover:text-white">
+              JOIN NOW
+            </Link>
           </motion.button>
         </div>
       </div>
 
       {/* Carousel Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
         {gymBackgrounds.map((_, idx) => (
           <div
             key={idx}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
               current === idx ? "bg-orange-500" : "bg-white/50"
             } transition-all duration-300`}
           ></div>
@@ -83,18 +83,18 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Side Text */}
-      <div className="absolute left-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
+      <div className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
         <div
-          className="text-white/30 text-sm font-light tracking-[0.3em] transform rotate-180"
+          className="text-white/30 text-xs sm:text-sm font-light tracking-wider transform rotate-180"
           style={{ writingMode: "vertical-rl" }}
         >
           PREV
         </div>
       </div>
 
-      <div className="absolute right-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
+      <div className="absolute right-4 sm:right-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
         <div
-          className="text-white/30 text-sm font-light tracking-[0.3em]"
+          className="text-white/30 text-xs sm:text-sm font-light tracking-wider"
           style={{ writingMode: "vertical-rl" }}
         >
           NEXT
@@ -102,21 +102,11 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Slanting white divider at the bottom */}
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          bottom: 0,
-          width: "100%",
-          height: "100px",
-          zIndex: 20,
-          pointerEvents: "none",
-        }}
-      >
+      <div className="absolute left-0 bottom-0 w-full h-24 sm:h-28 z-20 pointer-events-none">
         <svg
           viewBox="0 0 100 10"
           preserveAspectRatio="none"
-          style={{ display: "block", width: "100%", height: "100%" }}
+          className="w-full h-full"
         >
           <polygon fill="white" points="0,10 100,1 100,10 0,10" />
         </svg>
