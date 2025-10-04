@@ -14,7 +14,7 @@ const plans: Plan[] = [
     id: 1,
     name: "Basic",
     price: "₹0 / Free",
-    features: [" 1 Trial Access", "Limited Features", "Community Support"],
+    features: ["1 Trial Access", "Limited Features", "Community Support"],
     cta: "Choose Basic",
   },
   {
@@ -44,25 +44,28 @@ const plans: Plan[] = [
 
 const Membership: React.FC = () => {
   return (
-    <section className="py-20" style={{ backgroundColor: "#090E26" }}>
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
+    <section className="py-16 sm:py-20" style={{ backgroundColor: "#090E26" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12 sm:mb-16">
           <h2
-            className="text-5xl md:text-7xl font-bold text-white mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4"
             id="title"
           >
             <span className="text-white">MEMBER</span>
             <span style={{ color: "#fff" }}>SHIP</span>
           </h2>
-          <h3 className="text-2xl text-white mb-4">CHOOSE YOUR PLAN</h3>
-          <p className="text-white max-w-2xl mx-auto">
+          <h3 className="text-xl sm:text-2xl text-white mb-4">
+            CHOOSE YOUR PLAN
+          </h3>
+          <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl mx-auto px-2">
             Flexible membership options to fit your fitness journey. Enjoy
             world-class facilities, expert trainers, and a motivating community.
           </p>
         </div>
 
         {/* Plans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
           {plans.map((plan) => (
             <div
               key={plan.id}
@@ -70,21 +73,24 @@ const Membership: React.FC = () => {
                 plan.highlight ? "border-yellow-400" : "border-gray-200"
               }`}
             >
-              <h4 className="text-2xl text-white sm:text-3xl font-bold mb-2">
+              <h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-center">
                 {plan.name}
               </h4>
-              <div className="text-2xl sm:text-4xl font-extrabold mb-6">
+              <div className="text-xl sm:text-3xl md:text-4xl font-extrabold mb-6 text-center">
                 {plan.price}
               </div>
-              <ul className="mb-8 space-y-3 text-sm sm:text-lg">
+              <ul className="mb-8 space-y-3 text-sm sm:text-base md:text-lg">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center">
-                    <span className="w-3 h-3 rounded-full mr-3 bg-white"></span>
+                  <li
+                    key={i}
+                    className="flex items-start sm:items-center text-left sm:text-center"
+                  >
+                    <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full mr-3 bg-white mt-1 sm:mt-0"></span>
                     {feature}
                   </li>
                 ))}
               </ul>
-              <button className="px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 border-2 border-white hover:bg-white hover:text-blue-950">
+              <button className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 border-2 border-white hover:bg-white hover:text-blue-950">
                 {plan.cta}
               </button>
             </div>

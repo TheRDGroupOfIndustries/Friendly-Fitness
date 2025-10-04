@@ -60,7 +60,7 @@ const Trainers: React.FC = () => {
             <div className="absolute -bottom-4 -right-8 w-16 h-1 transform -rotate-45" style={{ backgroundColor: '#090E26' }}></div> */}
           </div>
           <p className="text-xl text-gray-600 mt-6 max-w-2xl mx-auto">
-            FOR ATHLETIC WOMEN
+            FOR ATHLETIC  
           </p>
           <p className="text-gray-600 mt-4 max-w-3xl mx-auto leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestib ulum

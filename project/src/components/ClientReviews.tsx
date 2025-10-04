@@ -32,107 +32,56 @@ const testimonials = [
 ];
 
 const ClientReviews: React.FC = () => (
-  <section className="py-20 bg-white">
-    <div className="max-w-7xl mx-auto px-4">
+  <section className="py-12 sm:py-16 md:py-20 bg-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10">
       {/* Header */}
-      <div className="text-center mb-16">
+      <div className="text-center mb-10 sm:mb-14 md:mb-16">
         <div className="relative inline-block">
           <h2
-            className="text-5xl md:text-7xl font-bold text-black mb-4"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-2 sm:mb-4"
             id="title"
           >
             <span className="relative z-10">T</span>
             <span className="text-orange-500 relative z-10">ESTIMONIAL</span>
-            {/* <span className="absolute -top-4 -left-8 w-16 h-1 bg-orange-500 transform -rotate-45"></span>
-                <span className="absolute -bottom-4 -right-8 w-16 h-1 bg-orange-500 transform -rotate-45"></span> */}
           </h2>
-          <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
         </div>
-        <h3 className="text-2xl text-gray-800 mb-4">WHAT CLIENT'S SAY</h3>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestib ulum
-          porttitor egestas orci, vinec at velit vestibulum.
+        <h3 className="text-lg sm:text-2xl text-gray-800 mb-3 sm:mb-4">
+          WHAT CLIENTS SAY
+        </h3>
+        <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          porttitor egestas orci, nec at velit vestibulum.
         </p>
       </div>
 
       {/* Testimonials Grid */}
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-10 justify-items-center">
         {testimonials.map((testimonial, i) => (
           <div
             key={i}
-            style={{
-              backgroundColor: "#fff",
-              borderRadius: "12px",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-              padding: "80px 32px 32px",
-              maxWidth: "400px",
-              margin: "auto",
-              textAlign: "center",
-              position: "relative",
-            }}
+            className="relative bg-white rounded-xl shadow-lg p-6 pt-16 sm:pt-20 max-w-xs sm:max-w-sm md:max-w-md text-center transition-transform duration-300 hover:scale-105"
           >
             {/* Overlapping image */}
-            <div
-              style={{
-                position: "absolute",
-                top: "-50px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "100px",
-                height: "100px",
-                borderRadius: "50%",
-                border: "4px solid #f7941d",
-                overflow: "hidden",
-                backgroundColor: "#fff",
-              }}
-            >
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-orange-500 overflow-hidden bg-white">
               <img
-                src={testimonial?.image}
-                alt="Client"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="w-full h-full object-cover"
               />
             </div>
 
             {/* Name */}
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "18px",
-                marginTop: "-20px",
-                marginBottom: "50px",
-              }}
-            >
+            <h4 className="font-semibold text-base sm:text-lg mt-2 mb-6 sm:mb-8">
               {testimonial.name}
-            </div>
+            </h4>
 
-            {/* Quote icon */}
-            <div
-              style={{
-                fontSize: "100px",
-                color: "#f7941d",
-                margin: "0",
-                position: "absolute",
-                userSelect: "none",
-                top: "20%",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
+            {/* Quote Icon */}
+            <div className="text-orange-500 text-5xl sm:text-6xl absolute top-6 left-1/2 -translate-x-1/2 opacity-20 select-none">
               &ldquo;
             </div>
 
-            {/* Quote Text */}
-            <p
-              style={{
-                color: "#4a4a4a",
-                lineHeight: "1.7",
-                fontSize: "15px",
-              }}
-            >
+            {/* Review Text */}
+            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
               {testimonial.review}
             </p>
           </div>

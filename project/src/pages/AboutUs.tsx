@@ -98,7 +98,7 @@ const AboutUs: React.FC = () => {
               <span className="block w-8 h-1 bg-orange-500 ml-2 "></span>
             </div>
             <h2 className="text-2xl md:text-3xl font-light mt-2 text-white">
-              BUILDING A COMMUNITY OF ATHLETIC WOMEN
+              BUILDING A COMMUNITY OF ATHLETIC  
             </h2>
           </div>
         </div>

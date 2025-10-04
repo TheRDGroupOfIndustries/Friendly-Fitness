@@ -6,26 +6,23 @@ import { client } from "../sanityClient";
 import BlockContent from "@sanity/block-content-to-react";
 
 const About: React.FC = () => {
-  const [about, setAbout] = useState({});
+  const [about, setAbout] = useState<any>({});
   const navigate = useNavigate();
 
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "about"] {
-            _id,
-            image1{asset->{url}},
-            image2{asset->{url}},
-            image3{asset->{url}},
-
-            body
-          }`
+        `*[_type == "about"]{
+          _id,
+          image1{asset->{url}},
+          image2{asset->{url}},
+          image3{asset->{url}},
+          body
+        }`
       )
       .then((data) => setAbout(data[0]))
       .catch(console.error);
   }, []);
-
-  console.log(about);
 
   const serializers = {
     types: {
@@ -33,39 +30,54 @@ const About: React.FC = () => {
         switch (props.node.style) {
           case "h1":
             return (
-              <h1 className="text-4xl font-bold mb-4">{props.children}</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
+                {props.children}
+              </h1>
             );
           case "h2":
             return (
-              <h2 className="text-3xl font-semibold mb-3">{props.children}</h2>
+              <h2 className="text-2xl sm:text-3xl font-semibold mb-3 text-gray-800">
+                {props.children}
+              </h2>
             );
           case "blockquote":
             return (
-              <blockquote className="border-l-4 border-orange-500 pl-4 italic my-4">
+              <blockquote className="border-l-4 border-orange-500 pl-4 italic my-4 text-gray-700">
                 {props.children}
               </blockquote>
             );
           default:
-            return <p className="mb-4">{props.children}</p>; // Default paragraph styling
+            return (
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3">
+                {props.children}
+              </p>
+            );
         }
       },
-      // You can add more custom types here, like 'image' if you have images in your block content
-      // image: ({ node }: any) => <img src={urlFor(node).url()} alt={node.alt} />,
     },
-    list: (props: any) => {
-      if (props.type === "bullet") {
-        return <ul className="list-disc ml-6 mb-4">{props.children}</ul>;
-      }
-      return <ol className="list-decimal ml-6 mb-4">{props.children}</ol>;
-    },
-    listItem: (props: any) => <li className="mb-1">{props.children}</li>,
+    list: (props: any) =>
+      props.type === "bullet" ? (
+        <ul className="list-disc ml-5 mb-4">{props.children}</ul>
+      ) : (
+        <ol className="list-decimal ml-5 mb-4">{props.children}</ol>
+      ),
+    listItem: (props: any) => (
+      <li className="text-sm sm:text-base mb-1">{props.children}</li>
+    ),
     marks: {
       strong: (props: any) => (
-        <strong className="font-bold">{props.children}</strong>
+        <strong className="font-bold text-gray-800">{props.children}</strong>
       ),
-      em: (props: any) => <em className="italic">{props.children}</em>,
+      em: (props: any) => (
+        <em className="italic text-gray-700">{props.children}</em>
+      ),
       link: (props: any) => (
-        <a href={props.mark.href} className="text-orange-500 hover:underline">
+        <a
+          href={props.mark.href}
+          className="text-orange-500 hover:underline break-words"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {props.children}
         </a>
       ),
@@ -74,66 +86,60 @@ const About: React.FC = () => {
 
   return (
     <section className="py-10 sm:py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-          {/* Images Side */}
-          <div className="grid grid-cols-2 gap-2 sm:gap-4">
-            <div className="space-y-2 sm:space-y-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 items-center">
+          {/* Image Side */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-5">
+            <div className="space-y-3 sm:space-y-5">
               <img
-                // src={about?.image1 || Img2}
                 src={about?.image1?.asset?.url || Img2}
                 alt="Gym Equipment"
-                className="w-full h-32 xs:h-40 sm:h-64 object-cover rounded-lg shadow-lg"
+                className="w-full h-36 xs:h-44 sm:h-64 md:h-72 lg:h-80 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="space-y-2 sm:space-y-4 pt-4 sm:pt-8">
+            <div className="space-y-3 sm:space-y-5 pt-3 sm:pt-6">
               <img
-                // src={about?.image1 || Img1}
                 src={about?.image2?.asset?.url || Img1}
-                alt="Athletic Woman Training"
-                className="w-full h-32 xs:h-40 sm:h-64 object-cover rounded-lg shadow-lg"
+                alt="Athletic Training"
+                className="w-full h-36 xs:h-44 sm:h-64 md:h-72 lg:h-80 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
 
           {/* Content Side */}
-          <div className="lg:pl-8">
-            <div className="mb-6 sm:mb-8">
-              <h2
-                className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-2 sm:mb-4"
-                id="title"
-              >
-                <span className="text-black">ABOUT</span>
-                <span style={{ color: "#090E26" }}> US</span>
+          <div className="lg:pl-6">
+            {/* Title */}
+            <div className="mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black mb-2">
+                <span>ABOUT</span>{" "}
+                <span className="text-orange-500">US</span>
               </h2>
-              <div
-                className="w-10 sm:w-16 h-1"
-                style={{ backgroundColor: "#090E26" }}
-              ></div>
-              <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-light text-gray-800">
-                THE BEST GYM
+              <div className="w-14 sm:w-20 h-1 bg-orange-500 mb-3"></div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-700 uppercase">
+            Best online fitness platform
               </h3>
             </div>
 
-            <div className="space-y-4 sm:space-y-6 text-gray-600 leading-relaxed text-sm xs:text-base">
-              {about?.body && (
+            {/* Dynamic Content */}
+            <div className="space-y-4 sm:space-y-6 text-gray-600">
+              {about?.body ? (
                 <BlockContent
                   blocks={about.body}
                   serializers={serializers}
                   projectId={client.config().projectId}
                   dataset={client.config().dataset}
                 />
+              ) : (
+                <p className="text-sm sm:text-base text-gray-500">
+                  Loading about section content...
+                </p>
               )}
             </div>
 
+            {/* Button */}
             <button
-              className="mt-6 sm:mt-8 bg-transparent border-2 px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 transform hover:scale-105"
               onClick={() => navigate("/aboutus")}
-              style={{
-                borderColor: "#090E26",
-                color: "#090E26",
-                backgroundColor: "transparent",
-              }}
+              className="mt-6 sm:mt-8 border-2 border-orange-500 text-orange-500 px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-orange-500 hover:text-white transform hover:scale-105"
             >
               READ MORE
             </button>
