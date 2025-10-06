@@ -299,9 +299,7 @@ const Blog: React.FC = () => {
           <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
             BLOG
           </h1>
-          <h2 className="text-2xl md:text-3xl font-light mt-2 text-white">
-            BUILDING A COMMUNITY OF ATHLETIC WOMEN
-          </h2>
+         
         </div>
       </section>
 
