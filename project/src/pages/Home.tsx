@@ -1,9 +1,9 @@
-import React from 'react';
+// import React from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Courses from '../components/Courses';
 import VideoSection from '../components/VideoSection';
-import Trainers from '../components/Trainers';
+// import Trainers from '../components/Trainers';
 // import Schedule from '../components/Schedule';
 // import Gallery from '../components/Gallery';
 import ClientReviews from '../components/ClientReviews';
@@ -32,7 +32,7 @@ function Home() {
           <polygon fill="white" points="0,10 100,-4 100,10 0,10" />
         </svg>
       </div>
-      <Trainers />
+      {/* <Trainers /> */}
       <VideoSection />
       <ClientReviews />
       <Membership />

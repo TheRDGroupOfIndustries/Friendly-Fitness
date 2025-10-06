@@ -79,13 +79,13 @@ const Contact: React.FC = () => {
               </a>
             </div>
 
-            <div className="space-y-1">
+            {/* <div className="space-y-1">
               <span className="font-bold text-orange-500 text-sm sm:text-base">Address:</span>
               <br />
               <p className="text-gray-200 text-sm sm:text-base">
                 123 GYM STREET, FITCITY, 456789
               </p>
-            </div>
+            </div> */}
 
             <div className="space-y-1">
               <span className="font-bold text-orange-500 text-sm sm:text-base">Call:</span>
