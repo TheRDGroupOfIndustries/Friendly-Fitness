@@ -71,7 +71,7 @@ const ClientReviews: React.FC = () => (
             </div>
 
             {/* Name */}
-            <h4 className="font-semibold text-sm xs:text-base sm:text-lg mt-1 xs:mt-2 mb-5 xs:mb-6 sm:mb-8 px-2">
+            <h4 className="font-semibold text-sm xs:text-base sm:text-lg mt-4 xs:mt-2 mb-5 xs:mb-6 sm:mb-8 px-2">
               {testimonial.name}
             </h4>
 
