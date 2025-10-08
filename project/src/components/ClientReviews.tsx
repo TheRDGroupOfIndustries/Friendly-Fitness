@@ -1,33 +1,26 @@
 import React from "react";
+import { FaUserCircle } from "react-icons/fa";
 
 const testimonials = [
   {
-    name: "DAVINC ATONE",
-    image:
-      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Amit S.",
     review:
-      "Praesent aliquet diam et arcu laoreet pellentesque. Integer non euismod eros, vel ornare lorem. Morbi imperdiet tellus sed nulla tempus finibus. Donec sodales ante et nulla egestas, in rutrum arcu viverra.",
+      "Before Fitness Evolution, my workouts were inconsistent and I never saw results. Their personalized coaching + weekly check-ins transformed not just my body, but my confidence. I feel stronger, more energetic, and genuinely proud of my progress.",
   },
   {
-    name: "SOPHIA LEE",
-    image:
-      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Priya M.",
     review:
-      "The trainers are amazing and the environment is so motivating! I have achieved my fitness goals faster than I imagined.",
+      "The video call training sessions are a game-changer. Even when I travel for work, I never skip a session. The coaches really care about your form and push you to improve every time.",
   },
   {
-    name: "JASON SMITH",
-    image:
-      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Rahul K.",
     review:
-      "A fantastic gym with top-notch equipment and a friendly community. Highly recommended for anyone serious about fitness.",
+      "I used to struggle with motivation and had no idea how to eat properly. Fitness Evolution’s holistic plan—fitness + mindset + nutrition—helped me lose fat AND gain muscle. Best decision ever!",
   },
   {
-    name: "EMILY CLARK",
-    image:
-      "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Sneha T.",
     review:
-      "I love the variety of classes and the support from the staff. Every session is challenging and fun!",
+      "What I love most is how Fitness Evolution treats fitness as a lifestyle, not just a workout. The monthly calls, mindset coaching, support—it’s a full journey, and I finally feel like I’m evolving every day.",
   },
 ];
 
@@ -49,8 +42,7 @@ const ClientReviews: React.FC = () => (
           WHAT CLIENTS SAY
         </h3>
         <p className="text-gray-600 text-xs xs:text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4 sm:px-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-          porttitor egestas orci, nec at velit vestibulum.
+          Real transformations. Real people. Real results.
         </p>
       </div>
 
@@ -61,13 +53,9 @@ const ClientReviews: React.FC = () => (
             key={i}
             className="relative bg-white rounded-xl shadow-lg p-4 xs:p-5 sm:p-6 pt-14 xs:pt-16 sm:pt-18 md:pt-20 w-full max-w-xs sm:max-w-sm text-center transition-transform duration-300 hover:scale-105"
           >
-            {/* Overlapping image */}
-            <div className="absolute -top-10 xs:-top-11 sm:-top-12 left-1/2 -translate-x-1/2 w-20 h-20 xs:w-22 xs:h-22 sm:w-24 sm:h-24 rounded-full border-4 border-orange-500 overflow-hidden bg-white shadow-md">
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="w-full h-full object-cover"
-              />
+            {/* Icon */}
+            <div className="absolute -top-10 xs:-top-11 sm:-top-12 left-1/2 -translate-x-1/2 w-20 h-20 xs:w-22 xs:h-22 sm:w-24 sm:h-24 rounded-full border-4 border-orange-500 flex items-center justify-center bg-white shadow-md">
+              <FaUserCircle className="text-orange-500 text-6xl sm:text-7xl" />
             </div>
 
             {/* Name */}

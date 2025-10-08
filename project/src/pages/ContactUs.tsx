@@ -67,9 +67,7 @@ const [formData, setFormData] = useState({
               </h1>
               <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-light text-white mt-2">
-              BUILDING A COMMUNITY OF ATHLETIC WOMEN
-            </h2>
+           
           </div>
         </div>
       </section>

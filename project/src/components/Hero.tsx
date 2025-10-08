@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
           <span className="text-orange-500">Evolution</span>
           <br />
           <span className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-normal text-gray-200">
-            FOR ATHLETIC
+            For Every Individual
           </span>
         </motion.h1>
 
@@ -53,8 +53,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          We Offer Hardcore Strength Machines, Curve Treadmills, Boxing Studio, TRX, and Spinning.
-        </motion.p>
+       We offer personalized fitness coaching, online training sessions, and holistic wellness programs designed to transform your body, mindset, and lifestyle wherever you are. </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}

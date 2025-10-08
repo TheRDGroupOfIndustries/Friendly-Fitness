@@ -1,41 +1,35 @@
 import React from "react";
+import { User, MessageSquareQuote } from "lucide-react"; 
+
 
 const testimonials = [
   {
-    name: "DAVINC ATONE",
-    image:
-      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Amit S.",
     review:
-      "Praesent aliquet diam et arcu laoreet pellentesque. Integer non euismod eros, vel ornare lorem. Morbi imperdiet tellus sed nulla tempus finibus. Donec sodales ante et nulla egestas, in rutrum arcu viverra.",
+      "Before Fitness Evolution, my workouts were inconsistent. Their personalized coaching transformed not just my body, but my confidence. I feel stronger, more energetic, and genuinely proud of my progress.",
   },
   {
-    name: "SOPHIA LEE",
-    image:
-      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Priya M.",
     review:
-      "The trainers are amazing and the environment is so motivating! I have achieved my fitness goals faster than I imagined.",
+      "The video call training sessions are a game-changer. Even when I travel for work, I never skip a session. The coaches really care about your form and push you to improve every time.",
   },
   {
-    name: "JASON SMITH",
-    image:
-      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Rahul K.",
     review:
-      "A fantastic gym with top-notch equipment and a friendly community. Highly recommended for anyone serious about fitness.",
+      "I used to struggle with motivation and had no idea how to eat properly. Fitness Evolution’s holistic plan—fitness + mindset + nutrition—helped me lose fat AND gain muscle. Best decision ever!",
   },
   {
-    name: "EMILY CLARK",
-    image:
-      "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Sneha T.",
     review:
-      "I love the variety of classes and the support from the staff. Every session is challenging and fun!",
+      "What I love most is how Fitness Evolution treats fitness as a lifestyle, not just a workout. The monthly calls and mindset coaching make it a full journey. I finally feel like I’m evolving every day.",
   },
 ];
 
+// --- Testimonial Component ---
 const Testimonial: React.FC = () => (
   <div>
     {/* Hero/Header Section */}
-    <section className="relative h-[350px] md:h-[400px] flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+    <section className="relative flex h-[350px] items-center justify-center overflow-hidden md:h-[400px]">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -45,128 +39,62 @@ const Testimonial: React.FC = () => (
       >
         <div className="absolute inset-0 bg-black/70"></div>
       </div>
-      {/* Content */}
-      <div className="relative z-10 text-center text-white px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 flex items-center justify-center">
-          <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
+      <div className="relative z-10 px-4 text-center text-white">
+        <h1 className="mb-4 flex items-center justify-center text-5xl font-bold md:text-7xl">
+          <span className="mr-2 block h-1 w-8 bg-orange-500"></span>
           <span className="mr-2 text-white">TESTIMONIAL</span>
-          <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
+          <span className="mr-2 block h-1 w-8 bg-orange-500"></span>
         </h1>
-        <h2 className="text-2xl md:text-3xl font-light text-white">
+        <h2 className="text-2xl font-light text-white md:text-3xl">
           WHAT CLIENT'S SAY
         </h2>
       </div>
     </section>
 
-    {/* Testimonials Grid */}
-   <section className="py-20 bg-white">
-    <div className="max-w-7xl mx-auto px-4">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <div className="relative inline-block">
-          <h2
-            className="text-5xl md:text-7xl font-bold text-black mb-4"
-            id="title"
-          >
-            <span className="relative z-10">T</span>
-            <span className="text-orange-500 relative z-10">ESTIMONIAL</span>
-            {/* <span className="absolute -top-4 -left-8 w-16 h-1 bg-orange-500 transform -rotate-45"></span>
-                <span className="absolute -bottom-4 -right-8 w-16 h-1 bg-orange-500 transform -rotate-45"></span> */}
+    {/* Testimonials Grid Section */}
+    <section className="bg-white py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-5xl font-bold text-black md:text-7xl">
+            <span className="text-orange-500">TESTIMONIALS</span>
           </h2>
-          <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
+          <h3 className="mb-4 text-2xl text-gray-800">WHAT OUR CLIENTS SAY</h3>
+          <p className="mx-auto max-w-2xl text-gray-600">
+            Real stories from real people who transformed their lives with our
+            guidance and support.
+          </p>
         </div>
-        <h3 className="text-2xl text-gray-800 mb-4">WHAT CLIENT'S SAY</h3>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestib ulum
-          porttitor egestas orci, vinec at velit vestibulum.
-        </p>
-      </div>
 
-      {/* Testimonials Grid */}
-      <div className="grid md:grid-cols-2 gap-8">
-        {testimonials.map((testimonial, i) => (
-          <div
-            key={i}
-            style={{
-              backgroundColor: "#fff",
-              borderRadius: "12px",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-              padding: "80px 32px 32px",
-              maxWidth: "400px",
-              margin: "auto",
-              textAlign: "center",
-              position: "relative",
-            }}
-          >
-            {/* Overlapping image */}
+        {/* Testimonials Grid - Now with consistent card height */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-8">
+          {testimonials.map((testimonial, i) => (
             <div
-              style={{
-                position: "absolute",
-                top: "-50px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "100px",
-                height: "100px",
-                borderRadius: "50%",
-                border: "4px solid #f7941d",
-                overflow: "hidden",
-                backgroundColor: "#fff",
-              }}
+              key={i}
+              className="relative mx-auto flex h-full max-w-md flex-col rounded-xl bg-white p-8 pt-16 text-center shadow-lg"
             >
-              <img
-                src={testimonial?.image}
-                alt="Client"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
+              {/* Client Icon */}
+              <div className="absolute -top-[50px] left-1/2 flex h-[100px] w-[100px] -translate-x-1/2 items-center justify-center rounded-full border-4 border-orange-500 bg-white">
+                <User size={50} className="text-orange-500" />
+              </div>
+
+              {/* Background Quote Icon */}
+              <MessageSquareQuote
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-gray-100"
+                size={120}
               />
-            </div>
 
-            {/* Name */}
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "18px",
-                marginTop: "-20px",
-                marginBottom: "50px",
-              }}
-            >
-              {testimonial.name}
+              {/* Card Content - relative and z-10 to appear above the background icon */}
+              <div className="relative z-10 flex flex-grow flex-col">
+                <h4 className="mb-2 text-xl font-bold">{testimonial.name}</h4>
+                <p className="flex-grow text-gray-600 leading-relaxed">
+                  "{testimonial.review}"
+                </p>
+              </div>
             </div>
-
-            {/* Quote icon */}
-            <div
-              style={{
-                fontSize: "100px",
-                color: "#f7941d",
-                margin: "0",
-                position: "absolute",
-                userSelect: "none",
-                top: "20%",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
-              &ldquo;
-            </div>
-
-            {/* Quote Text */}
-            <p
-              style={{
-                color: "#4a4a4a",
-                lineHeight: "1.7",
-                fontSize: "15px",
-              }}
-            >
-              {testimonial.review}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   </div>
 );
 
