@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Smile, Dumbbell, Coffee, Award } from "lucide-react";
+import { Smile, Dumbbell, Coffee, Award ,User} from "lucide-react";
 // import Trainers from "../components/Trainers";
 import Img9 from "../assets/IMG-9.jpg";
 import Img10 from "../assets/IMG-10.jpg";
@@ -33,7 +33,18 @@ const AboutUs: React.FC = () => {
       .then((data) => setAbout(data[0]))
       .catch(console.error);
   }, []);
-
+ const testimonials = [
+    {
+      name: "Amit S.",
+      review:
+        "Before Fitness Evolution, my workouts were inconsistent. Their personalized coaching transformed not just my body, but my confidence. I feel stronger, more energetic, and genuinely proud of my progress.",
+    },
+    {
+      name: "Priya M.",
+      review:
+        "The video call training sessions are a game-changer. Even when I travel for work, I never skip a session. The coaches really care about your form and push you to improve every time.",
+    },
+  ];
   const serializers = {
     types: {
       block: (props: any) => {
@@ -205,119 +216,105 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="relative inline-block">
-              <h2
-                className="text-5xl md:text-7xl font-bold text-black mb-4"
-                id="title"
-              >
-                <span className="relative z-10">T</span>
-                <span className="text-orange-500 relative z-10">
-                  ESTIMONIAL
-                </span>
-                {/* <span className="absolute -top-4 -left-8 w-16 h-1 bg-orange-500 transform -rotate-45"></span>
-                <span className="absolute -bottom-4 -right-8 w-16 h-1 bg-orange-500 transform -rotate-45"></span> */}
-              </h2>
-              <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></div>
-            </div>
-            <h3 className="text-2xl text-gray-800 mb-4">WHAT CLIENT'S SAY</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestib
-              ulum porttitor egestas orci, vinec at velit vestibulum.
-            </p>
+     <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="relative inline-block">
+            <h2
+              className="text-5xl md:text-7xl font-bold text-black mb-4"
+              id="title"
+            >
+              <span className="relative z-10">T</span>
+              <span className="text-orange-500 relative z-10">ESTIMONIAL</span>
+            </h2>
           </div>
+          <h3 className="text-2xl text-gray-800 mb-4">WHAT CLIENT'S SAY</h3>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+            porttitor egestas orci, vitae at velit vestibulum.
+          </p>
+        </div>
 
-          {/* Testimonials Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2].map((i) => (
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              style={{
+                backgroundColor: "#fff",
+                borderRadius: "12px",
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+                padding: "80px 32px 32px",
+                maxWidth: "400px",
+                margin: "auto",
+                textAlign: "center",
+                position: "relative",
+              }}
+            >
+              {/* Icon instead of image */}
               <div
-                key={i}
                 style={{
+                  position: "absolute",
+                  top: "-50px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "100px",
+                  height: "100px",
+                  borderRadius: "50%",
+                  border: "4px solid #f7941d",
                   backgroundColor: "#fff",
-                  borderRadius: "12px",
-                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-                  padding: "80px 32px 32px",
-                  maxWidth: "400px",
-                  margin: "auto",
-                  textAlign: "center",
-                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                {/* Overlapping image */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "-50px",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: "100px",
-                    height: "100px",
-                    borderRadius: "50%",
-                    border: "4px solid #f7941d",
-                    overflow: "hidden",
-                    backgroundColor: "#fff",
-                  }}
-                >
-                  <img
-                    src={Img9}
-                    alt="Client"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-
-                {/* Name */}
-                <div
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "18px",
-                    marginTop: "-20px",
-                    marginBottom: "50px",
-                  }}
-                >
-                  DAVINC ATONE
-                </div>
-
-                {/* Quote icon */}
-                <div
-                  style={{
-                    fontSize: "100px",
-                    color: "#f7941d",
-                    margin: "0",
-                    position: "absolute",
-                    userSelect: "none",
-                    top: "20%",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                  }}
-                >
-                  &ldquo;
-                </div>
-
-                {/* Quote Text */}
-                <p
-                  style={{
-                    color: "#4a4a4a",
-                    lineHeight: "1.7",
-                    fontSize: "15px",
-                  }}
-                >
-                  Praesent aliquet diam et arcu laoreet pellentesque. Integer
-                  non euismod eros, vel ornare lorem. Morbi imperdiet tellus sed
-                  nulla tempus finibus. Donec sodales ante et nulla egestas, in
-                  rutrum arcu viverra.
-                </p>
+                <User size={50} className="text-orange-500" />
               </div>
-            ))}
-          </div>
+
+              {/* Name */}
+              <div
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                  marginTop: "-20px",
+                  marginBottom: "50px",
+                }}
+              >
+                {testimonial.name}
+              </div>
+
+              {/* Quote icon */}
+              <div
+                style={{
+                  fontSize: "100px",
+                  color: "#f7941d",
+                  margin: "0",
+                  position: "absolute",
+                  userSelect: "none",
+                  top: "20%",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                }}
+              >
+                &ldquo;
+              </div>
+
+              {/* Review Text */}
+              <p
+                style={{
+                  color: "#4a4a4a",
+                  lineHeight: "1.7",
+                  fontSize: "15px",
+                }}
+              >
+                {testimonial.review}
+              </p>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Trainers Section */}
       {/* <Trainers /> */}
