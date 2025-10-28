@@ -1,6 +1,6 @@
 import React from "react";
 import {  Phone } from "lucide-react";
-import { useState } from "react";
+import { useState,useRef,useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const API_URL = import.meta.env.VITE_API_URL;
@@ -18,6 +18,20 @@ const [formData, setFormData] = useState({
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
   
+    const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (formRef.current) {
+      const headerOffset = 80; 
+      const elementPosition = formRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  }, []);
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       setLoading(true); 
@@ -59,10 +73,10 @@ const [formData, setFormData] = useState({
           <div className="absolute inset-0 bg-black/70"></div>
         </div>
         <div className="relative z-10 text-left w-full max-w-5xl px-4">
-          <div className="flex flex-col items-start justify-center h-full">
+          <div className="flex flex-col items-center justify-center h-full">
             <div className="flex items-center mb-2">
               <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
-              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
+              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white ">
                 CONTACT US
               </h1>
               <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
@@ -114,7 +128,7 @@ const [formData, setFormData] = useState({
       </section> */}
 
       {/* Contact Form Section */}
-      <section className="max-w-7xl mx-auto px-4 pb-16 w-full">
+      <section ref={formRef} className="max-w-7xl mx-auto px-4 pb-16 w-full">
         <div className="mb-12">
           <div className="flex items-center mb-2">
             {/* <span className="block w-12 h-1 bg-orange-500 mr-2 -rotate-12"></span> */}

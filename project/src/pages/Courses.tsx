@@ -217,17 +217,20 @@ const Courses: React.FC = () => {
       </section>
 
       {/* Promo Banner */}
-      <section className="bg-orange-500 py-12 text-center relative">
+      <section className="bg-orange-500 py-12 text-center relative ">
+        <div className='flex flex-col gap-8'>
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-          Fitness Classes This Summer.
+           Your Fitness Journey Starts Here.
           <br />
-          Pay Now &amp; GET 35% Discount
+          Pay Now & GET 35% Discount
         </h2>
         <Link to="/aboutus">
-          <button className="mt-4 px-10 py-4 rounded-full border-2 border-white text-white bg-transparent font-bold text-lg hover:bg-white hover:text-orange-500 transition-all duration-300">
-            Read More
-          </button>
+          <Link to='/contact' className="mt-4 px-10 py-4 rounded-full border-2 border-white text-white bg-transparent font-bold text-lg hover:bg-white hover:text-orange-500 transition-all duration-300">
+            Join Now
+          </Link>
         </Link>
+
+        </div>
       </section>
     </div>
   );

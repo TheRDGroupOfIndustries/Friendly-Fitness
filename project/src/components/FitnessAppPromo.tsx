@@ -49,7 +49,7 @@ const FitnessAppPromo = () => {
             <span className="text-orange-500">Evolution</span>
             <br />
             <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white">
-              FOR ATHLETIC
+              FOR EVERY INDIVIDUAL
             </span>
           </motion.h1>
 

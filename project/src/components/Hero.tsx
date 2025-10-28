@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <Link
-            to="/courses"
+            to="/contact"
             className="inline-block border-2 border-white text-white px-6 sm:px-10 md:px-12 py-2.5 sm:py-3 md:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 transform hover:scale-105"
           >
             JOIN NOW
