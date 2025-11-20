@@ -166,7 +166,7 @@ app.post('/membership', async (req: Request, res: Response) => {
 
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Failed to send email' });
+    res.status(500).json({ message: 'Failed to send email' ,error:error });
   }
 });
 // Run server

@@ -70,6 +70,10 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
+
+  const subscribeHandler = ()=>{
+    alert("Subsceribed");
+  };
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -172,7 +176,7 @@ const Footer = () => {
                   placeholder="Enter your email"
                   className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 text-sm"
                 />
-                <button className="px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-medium text-sm transition">
+                <button className="px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-medium text-sm transition" onClick={subscribeHandler}>
                   Subscribe
                 </button>
               </div>

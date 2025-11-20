@@ -25,16 +25,49 @@ const Membership: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // 1. Add state for validation errors
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
   const handleChoosePlan = (plan: Plan) => {
     setSelectedPlan(plan);
     setIsModalOpen(true);
+    // Reset errors when opening the modal
+    setErrors({ name: "", email: "", phone: "" });
+  };
+
+  // 2. Create the validation function
+  const validateForm = (data: { name: string; email: string; phone: string; }) => {
+    const newErrors = { name: "", email: "", phone: "" };
+    let isValid = true;
+
+    if (!data.name.trim()) {
+      newErrors.name = "Full Name is required";
+      isValid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+      newErrors.email = "Please enter a valid email address";
+      isValid = false;
+    }
+
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(data.phone)) {
+      newErrors.phone = "Please enter a valid 10-digit phone number";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!selectedPlan) return;
-
-    setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -45,6 +78,14 @@ const Membership: React.FC = () => {
       planName: selectedPlan.name,
       planPrice: selectedPlan.price,
     };
+
+    // 3. Run validation before submitting
+    if (!validateForm(data)) {
+      toast.error("Please fix the errors in the form.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const response = await fetch(`${API_URL}/membership`, {
@@ -61,7 +102,8 @@ const Membership: React.FC = () => {
       setIsModalOpen(false);
     } catch (error) {
       toast.error('Submission failed. Please try again.');
-    } finally {
+      console.log("error in membership",error);
+        } finally {
       setIsSubmitting(false);
     }
   };
@@ -137,15 +179,21 @@ const Membership: React.FC = () => {
                 <div className="p-6 space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                    <input type="text" id="name" name="name" required className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                    <input type="text" id="name" name="name" required className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="John Medis"/>
+                    {/* 4. Display the name error */}
+                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                    <input type="email" id="email" name="email" required className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                    <input type="email" id="email" name="email" required className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="your@gmail.com"/>
+                    {/* 4. Display the email error */}
+                    {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                     <input type="tel" id="phone" name="phone" required className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                    {/* 4. Display the phone error */}
+                    {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message (Optional)</label>
@@ -166,7 +214,6 @@ const Membership: React.FC = () => {
         )}
       </section>
       
-      {/* ToastContainer is where the notifications will be rendered */}
       <ToastContainer
         position="bottom-right"
         autoClose={3000}

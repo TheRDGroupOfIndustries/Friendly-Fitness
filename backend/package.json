@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-"scripts": {
-  "dev": "nodemon --watch . --ext ts --exec ts-node index.ts",
-  "build": "tsc",
-  "start": "node dist/index.js"
-},
+  "scripts": {
+    "dev": "nodemon --watch . --ext ts --exec ts-node index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
   "author": "",
   "license": "ISC",
   "description": "",
@@ -23,7 +23,7 @@
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
     "@types/nodemailer": "^7.0.1",
-    "nodemon": "^3.1.10",
+    "nodemon": "^3.1.11",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"
