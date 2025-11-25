@@ -32,7 +32,7 @@ const Navigation: React.FC = () => {
           <Link to="/" className="flex items-center gap-2 sm:gap-3">
             <img
               src={logo}
-              alt="Fitness Revolution Logo"
+              alt="Fitness evolution Logo"
               className="h-9 w-9 sm:h-10 sm:w-10 rounded-full object-cover"
             />
             <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white">

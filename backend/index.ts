@@ -104,7 +104,7 @@ app.post("/send-email", async (req: Request, res: Response) => {
                   message || "No message provided"
                 }</p>
             </div>
-            <p style="margin-top: 20px;">Best regards,<br/>Fitness evolution </p>
+            <p style="margin-top: 20px;">Best regards,<br/>Fitness Evolution </p>
           </div>
           <div style="background-color: #f4f4f4; padding: 10px; text-align: center; font-size: 12px; color: #888;">
             <p>You are receiving this email as a confirmation of your submission on our website.</p>
@@ -205,7 +205,7 @@ app.post("/membership", async (req: Request, res: Response) => {
           <div style="padding: 20px; color: #333; line-height: 1.6;">
             <p>Thank you for choosing the <strong>${planName}</strong> plan. We've received your inquiry and are excited to have you join our community.</p>
             <p>A member of our team will contact you shortly to finalize your registration.</p>
-            <p>Best regards,<br/>The Team</p>
+            <p>Best regards,<br/>Fitness Evolution</p>
           </div>
         </div>
       `,
