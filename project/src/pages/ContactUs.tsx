@@ -1,7 +1,7 @@
 import React from "react";
 import {  Phone } from "lucide-react";
 import { useState,useRef,useEffect } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -60,6 +60,7 @@ const [formData, setFormData] = useState({
     };
 
   return (
+    <>
     <div className="bg-white min-h-screen flex flex-col">
       {/* Hero/Header Section */}
       <section className="relative h-[350px] md:h-[400px] flex items-center justify-center overflow-hidden">
@@ -184,6 +185,20 @@ const [formData, setFormData] = useState({
         </form>
       </section>
     </div>
+
+    <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   );
 };
 

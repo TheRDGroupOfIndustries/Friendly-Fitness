@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 interface Plan {
   id: number;
   name: string;
-  price: string;
+  // price: string;
   features: string[];
   cta: string;
   highlight?: boolean;
@@ -15,9 +15,15 @@ interface Plan {
 const API_URL = import.meta.env.VITE_API_URL;
 
 const plans: Plan[] = [
-  { id: 1, name: "Basic", price: "₹0 / Free", features: ["1 Trial Access", "Limited Features", "Community Support"], cta: "Choose Basic" },
-  { id: 2, name: "Standard", price: "₹12k / month", features: ["Full Access to Core Features", "Priority Support", "Free Onboarding & Setup"], cta: "Choose Standard", highlight: true },
-  { id: 3, name: "Premium", price: "₹30k / 3 months", features: ["Standard Features + Advanced Tools", "Dedicated Account Manager", "Exclusive Resources & Consultations"], cta: "Choose Premium" },
+  { id: 1, name: "Basic",
+    //  price: "₹0 / Free", 
+    features: ["1 Trial Access", "Limited Features", "Community Support"], cta: "Choose Basic" },
+  { id: 2, name: "Group Classes",
+    //  price: "₹12k / month",
+      features: ["Full Access to Core Features", "Priority Support", "Free Onboarding & Setup"], cta: "Choose Standard", highlight: true },
+  { id: 3, name: "One To One",
+    //  price: "₹30k / 3 months",
+      features: ["Standard Features + Advanced Tools", "Dedicated Account Manager", "Exclusive Resources & Consultations"], cta: "Choose Premium" },
 ];
 
 const Membership: React.FC = () => {
@@ -76,7 +82,7 @@ const Membership: React.FC = () => {
       phone: formData.get('phone') as string,
       message: formData.get('message') as string,
       planName: selectedPlan.name,
-      planPrice: selectedPlan.price,
+      // planPrice: selectedPlan.price,
     };
 
     // 3. Run validation before submitting
@@ -142,9 +148,7 @@ const Membership: React.FC = () => {
                 <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-6 mb-3 text-center">
                   {plan.name}
                 </h4>
-                <div className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-5 sm:mb-6 text-center">
-                  {plan.price}
-                </div>
+                
                 <ul className="mb-6 sm:mb-8 space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg w-full flex-grow">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start">
