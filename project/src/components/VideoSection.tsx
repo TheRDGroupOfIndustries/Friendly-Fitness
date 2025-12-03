@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Play, X } from "lucide-react";
 import Img16 from "../assets/IMG-16.jpg";
 // CHANGE 1: Import the local video file
-import LocalVideo from "../assets/fitness_video.mp4"; 
+import LocalVideo from "../assets/fitnessVideo.mp4"; 
 
 const VideoSection: React.FC = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
