@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Play, X } from "lucide-react";
 import Img16 from "../assets/IMG-16.jpg";
+// CHANGE 1: Import the local video file
+import LocalVideo from "../assets/fitness_video.mp4"; 
 
 const VideoSection: React.FC = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -70,14 +72,18 @@ const VideoSection: React.FC = () => {
 
             {/* Video Container */}
             <div className="relative w-full h-0 pb-[56.25%] bg-black rounded-lg overflow-hidden">
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                title="Fitness Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              
+              {/* CHANGE 2: Replace iframe with video tag */}
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                src={LocalVideo}
+                controls
+                autoPlay
+                playsInline
+              >
+                Your browser does not support the video tag.
+              </video>
+
             </div>
           </div>
         </div>
