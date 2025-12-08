@@ -9,7 +9,7 @@ const VideoSection: React.FC = () => {
   return (
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
+
         <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden">
           <img
             src={Img16}
@@ -20,7 +20,7 @@ const VideoSection: React.FC = () => {
           <div className="absolute inset-0 bg-black/70 z-10"></div>
         </div>
 
-        {/* Content */}
+       
         <div className="relative z-20 text-center text-white px-4 sm:px-6 md:px-8">
           <button
             onClick={() => setIsVideoOpen(true)}
@@ -45,21 +45,21 @@ const VideoSection: React.FC = () => {
           </button>
         </div>
 
-        {/* Decorative Elements */}
+    
         <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 flex flex-col space-y-2">
           <div className="w-12 sm:w-16 h-1 bg-orange-500 transform -rotate-45"></div>
           <div className="w-8 sm:w-12 h-1 bg-orange-500 transform -rotate-45"></div>
         </div>
       </section>
 
-      {/* Video Modal */}
+    
       {isVideoOpen && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
           
-          {/* Main Container - removed the h-40 restriction */}
+         
           <div className="relative w-full max-w-sm mx-auto flex flex-col items-center">
             
-            {/* Close Button - positioned relative to the video container */}
+           
             <button
               onClick={() => setIsVideoOpen(false)}
               className="self-end mb-4 text-white hover:text-orange-500 transition-colors"
@@ -67,7 +67,7 @@ const VideoSection: React.FC = () => {
               <X className="w-8 h-8" />
             </button>
 
-            {/* Video Wrapper - Using Aspect Ratio 9:16 */}
+ 
             <div className="w-full relative bg-black rounded-lg overflow-hidden shadow-2xl" style={{ aspectRatio: '9/16' }}>
               <video
                 className="absolute inset-0 w-full h-full object-cover"
