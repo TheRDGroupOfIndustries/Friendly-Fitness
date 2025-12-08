@@ -60,7 +60,7 @@ const [formData, setFormData] = useState({
         </div>
         <div className="relative z-10 text-left w-full max-w-5xl px-4">
           <div className="flex flex-col items-start justify-center h-full">
-            <div className="flex items-center mb-2">
+            <div className="flex items-center mb-2 w-full justify-center">
               <span className="block w-8 h-1 bg-orange-500 mr-2"></span>
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
                 CONTACT US

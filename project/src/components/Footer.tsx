@@ -159,25 +159,7 @@ const Footer = () => {
 
         {/* Stay Connected - Bottom Section */}
         <div className="mt-12 border-t border-gray-800 pt-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Newsletter */}
-            <div>
-              <h3 className="text-lg text-white font-semibold mb-3">Stay Connected</h3>
-              <p className="text-gray-400 mb-4 text-sm">
-                Subscribe to our newsletter for fitness tips & offers.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 text-sm"
-                />
-                <button className="px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-medium text-sm transition">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[50%]">
             {/* Social Media */}
             <div>
               <h4 className="text-lg text-white font-semibold mb-3">Follow Us</h4>

@@ -19,19 +19,19 @@ function Home() {
     <div className="min-h-screen">
       <Hero />
       {/* Slanting divider between Hero and About */}
-      <div style={{ position: 'relative', width: '100%', height: '60px', marginTop: '-1px', background: 'transparent', zIndex: 1 }}>
+      {/* <div style={{ position: 'relative', width: '100%', height: '60px', marginTop: '-1px', background: 'transparent', zIndex: 1 }}>
         <svg viewBox="0 0 100 10" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '100%' }}>
           <polygon fill="white" points="0,10 100,0 100,10 0,10" />
         </svg>
-      </div>
+      </div> */}
       <About />
       <Courses />
       {/* Slanting divider between Courses and Trainers */}
-      <div style={{ position: 'relative', width: '100%', height: '100px', marginTop: '-1px', background: 'transparent', zIndex: 1 }}>
+      {/* <div style={{ position: 'relative', width: '100%', height: '100px', marginTop: '-1px', background: 'transparent', zIndex: 1 }}>
         <svg viewBox="0 0 100 10" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '100%' }}>
           <polygon fill="white" points="0,10 100,-4 100,10 0,10" />
         </svg>
-      </div>
+      </div> */}
       {/* <Trainers /> */}
       <VideoSection />
       <ClientReviews />

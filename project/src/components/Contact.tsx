@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
       </div>
 
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
-        {/* Left: Gym Image and Contact Info */}
+        {/* Left: Gym Image and   Info */}
         <div className="flex flex-col justify-start items-center lg:items-start text-center lg:text-left w-full px-2 sm:px-4">
           <img
             src="https://images.pexels.com/photos/136404/pexels-photo-136404.jpeg?auto=compress&fit=crop&w=800&q=80"

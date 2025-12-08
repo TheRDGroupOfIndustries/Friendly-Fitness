@@ -14,7 +14,7 @@ const VideoSection: React.FC = () => {
           <img
             src={Img16}
             alt="Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
             style={{ position: "absolute", inset: 0, zIndex: 0 }}
           />
           <div className="absolute inset-0 bg-black/70 z-10"></div>
