@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const API_URL = import.meta.env.VITE_API_URL;
 
+console.log("API_URL in contact us",API_URL)
 const ContactUs: React.FC = () => {
 const [formData, setFormData] = useState({
     name: "",
@@ -18,32 +19,39 @@ const [formData, setFormData] = useState({
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
   
-    const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-      setLoading(true); 
-      try {
-        const response = await fetch(`${API_URL}/send-email`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-  
-        const result = await response.json();
-       toast.success(result.message);
-        setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        interest: "",
-        message: "",
-      });
-      } catch (error) {
-        console.error("Error submitting form:", error);
-        toast.error("Something went wrong. Please try again.");
-      }finally {
-      setLoading(false); //  stop loading
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    const response = await fetch(`${API_URL}/send-email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    // Check if the response is actually JSON before parsing
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const result = await response.json();
+      if (response.ok) {
+        toast.success(result.message || "Success!");
+        setFormData({ name: "", email: "", phone: "", interest: "", message: "" });
+      } else {
+        toast.error(result.message || "Server error occurred");
+      }
+    } else {
+      const textError = await response.text();
+      console.error("Non-JSON response received:", textError);
+      toast.error("Server returned an invalid format.");
     }
-    };
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    toast.error("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
@@ -163,6 +171,7 @@ const [formData, setFormData] = useState({
             <button
               type="submit"
               className="bg-orange-500 hover:bg-orange-600 text-white text-xl font-bold px-16 py-4 rounded-full shadow-lg transition-all duration-300"
+              onClick={handleSubmit}
             >
                {loading ? "Submitting..." : "Submit Now"}
             </button>

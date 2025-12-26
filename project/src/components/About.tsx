@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Img1 from "../assets/IMG-1.jpg";
-import Img2 from "../assets/IMG-2.jpg";
+// import Img1 from "../assets/IMG-1.jpg";
+// import Img2 from "../assets/IMG-2.jpg";
 import { useNavigate } from "react-router-dom";
 import { client } from "../sanityClient";
 import BlockContent from "@sanity/block-content-to-react";
+import newImg1 from "../assets/newImg1.jpg"
+import newImg2 from "../assets/newImg2.jpg"
+
 
 const About: React.FC = () => {
   const [about, setAbout] = useState<any>({});
@@ -92,16 +95,18 @@ const About: React.FC = () => {
           <div className="grid grid-cols-2 gap-3 sm:gap-5">
             <div className="space-y-3 sm:space-y-5">
               <img
-                src={about?.image1?.asset?.url || Img2}
+                // src={about?.image1?.asset?.url || Img2}
+                src={newImg1}
                 alt="Gym Equipment"
-                className="w-full h-36 xs:h-44 sm:h-64 md:h-72 lg:h-80 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto xs:h-44 sm:h-64 md:h-72 lg:h-auto object-contain rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="space-y-3 sm:space-y-5 pt-3 sm:pt-6">
               <img
-                src={about?.image2?.asset?.url || Img1}
+                // src={about?.image2?.asset?.url || Img1}
+                src={newImg2}
                 alt="Athletic Training"
-                className="w-full h-36 xs:h-44 sm:h-64 md:h-72 lg:h-80 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                className="w-full h-36 xs:h-44 sm:h-64 md:h-72 lg:h-auto object-conatain rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>

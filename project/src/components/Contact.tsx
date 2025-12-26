@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import newImg3 from "../assets/newImg3.jpg"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -57,8 +58,7 @@ const Contact: React.FC = () => {
         {/* Left: Gym Image and   Info */}
         <div className="flex flex-col justify-start items-center lg:items-start text-center lg:text-left w-full px-2 sm:px-4">
           <img
-            src="https://images.pexels.com/photos/136404/pexels-photo-136404.jpeg?auto=compress&fit=crop&w=800&q=80"
-            alt="Gym"
+            src={newImg3}
             className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 rounded-xl sm:rounded-2xl lg:rounded-3xl object-cover border-2 sm:border-4 border-orange-500 shadow-2xl transition-transform duration-300 hover:scale-105 mb-4 sm:mb-6"
           />
 

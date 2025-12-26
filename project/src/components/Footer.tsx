@@ -196,7 +196,7 @@ const Footer = () => {
               <h4 className="text-lg text-white font-semibold mb-3">Download Our App</h4>
               <div className="flex gap-3 flex-wrap">
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.fitness.evolution"
+                  href="https://play.google.com/store/apps/details?id=com.vikram.fitnessevolution"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-36 hover:scale-105 transition-transform"
