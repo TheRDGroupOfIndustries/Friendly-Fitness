@@ -7,6 +7,7 @@ import Img11 from "../assets/IMG-11.jpg";
 import { useNavigate } from "react-router-dom";
 import { client } from "../sanityClient";
 import BlockContent from "@sanity/block-content-to-react";
+import newImg4 from "../assets/newImg4.jpg"
 
 const AboutUs: React.FC = () => {
   const [about, setAbout] = useState({});
@@ -121,9 +122,9 @@ const AboutUs: React.FC = () => {
         <div className="relative flex justify-center">
           <div className="absolute top-6 left-6 w-full h-full bg-orange-500 rounded-lg -z-10"></div>
           <img
-            src={about?.image3?.asset?.url || Img10}
+            src={newImg4}
             alt="Athletic Woman"
-            className="w-full max-w-md rounded-lg shadow-lg object-cover"
+            className="w-full max-w-md rounded-lg shadow-lg object-top"
           />
         </div>
         {/* Text Side */}

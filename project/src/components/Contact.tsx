@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import newImg3 from "../assets/newImg3.jpg"
-
-const API_URL = import.meta.env.VITE_API_URL;
+import emailjs from "@emailjs/browser"; 
+import newImg3 from "../assets/newImg3.jpg";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +12,6 @@ const Contact: React.FC = () => {
     interest: "",
     message: "",
   });
-
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
@@ -24,23 +22,56 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Handle submit is called ")
     setLoading(true);
+
+    // 2. Define your IDs (It's better to put these in .env later)
+    const SERVICE_ID = "service_04i5dic"; // From your screenshot
+    const ADMIN_TEMPLATE_ID = "template_ay3ly0a"; 
+    const USER_TEMPLATE_ID = "template_za4i3oj";
+    const PUBLIC_KEY = "-jrTC0G9yFVq9YarU";
+
     try {
-      const response = await fetch(`${API_URL}/send-email`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const result = await response.json();
-      toast.success(result.message);
+      // 3. Send to Admin and User simultaneously
+      // We use emailjs.send instead of sendForm since we are using state
+      const adminPromise = emailjs.send(
+        SERVICE_ID,
+        ADMIN_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          interest: formData.interest,
+          message: formData.message,
+          reply_to: formData.email, // Useful for admin to reply directly
+        },
+        PUBLIC_KEY
+      );
+
+      const userPromise = emailjs.send(
+        SERVICE_ID,
+        USER_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        PUBLIC_KEY
+      );
+
+      await Promise.all([adminPromise, userPromise]);
+
+      toast.success("Inquiry sent successfully!");
       setFormData({ name: "", email: "", phone: "", interest: "", message: "" });
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast.error("Something went wrong. Please try again.");
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      toast.error(error?.text || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <section className="min-h-screen w-full flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-3 sm:px-6 lg:px-8 bg-black text-white">
@@ -102,7 +133,7 @@ const Contact: React.FC = () => {
 
         {/* Right: Contact Form */}
         <div className="bg-white text-black rounded-xl sm:rounded-2xl shadow-2xl p-4 xs:p-6 sm:p-8 lg:p-10 xl:p-12 w-full max-w-xl mx-auto lg:mx-0">
-          <form className="flex flex-col gap-3 sm:gap-4 lg:gap-5" onSubmit={handleSubmit}>
+          <form className="flex flex-col gap-3 sm:gap-4 lg:gap-5" onSubmit={handleSubmit} >
             <div>
               <label className="block text-gray-800 font-medium mb-1 sm:mb-2 text-sm sm:text-base">
                 Name*

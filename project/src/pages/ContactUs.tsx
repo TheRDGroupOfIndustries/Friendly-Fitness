@@ -3,6 +3,7 @@ import {  Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import emailjs from "@emailjs/browser"; 
 const API_URL = import.meta.env.VITE_API_URL;
 
 console.log("API_URL in contact us",API_URL)
@@ -19,39 +20,57 @@ const [formData, setFormData] = useState({
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
   
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
-  try {
-    const response = await fetch(`${API_URL}/send-email`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Handle submit is called ")
+    setLoading(true);
 
-    // Check if the response is actually JSON before parsing
-    const contentType = response.headers.get("content-type");
-    if (contentType && contentType.includes("application/json")) {
-      const result = await response.json();
-      if (response.ok) {
-        toast.success(result.message || "Success!");
-        setFormData({ name: "", email: "", phone: "", interest: "", message: "" });
-      } else {
-        toast.error(result.message || "Server error occurred");
-      }
-    } else {
-      const textError = await response.text();
-      console.error("Non-JSON response received:", textError);
-      toast.error("Server returned an invalid format.");
+    // 2. Define your IDs (It's better to put these in .env later)
+    const SERVICE_ID = "service_04i5dic"; 
+    const ADMIN_TEMPLATE_ID = "template_ay3ly0a"; 
+    const USER_TEMPLATE_ID = "template_za4i3oj";
+    const PUBLIC_KEY = "-jrTC0G9yFVq9YarU";
+
+    try {
+      // 3. Send to Admin and User simultaneously
+      // We use emailjs.send instead of sendForm since we are using state
+      const adminPromise = emailjs.send(
+        SERVICE_ID,
+        ADMIN_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          interest: formData.interest,
+          message: formData.message,
+          reply_to: formData.email, // Useful for admin to reply directly
+        },
+        PUBLIC_KEY
+      );
+
+      const userPromise = emailjs.send(
+        SERVICE_ID,
+        USER_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        PUBLIC_KEY
+      );
+
+      await Promise.all([adminPromise, userPromise]);
+
+      toast.success("Inquiry sent successfully!");
+      setFormData({ name: "", email: "", phone: "", interest: "", message: "" });
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      toast.error(error?.text || "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    toast.error("Something went wrong. Please try again.");
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   return (
     <div className="bg-white min-h-screen flex flex-col">

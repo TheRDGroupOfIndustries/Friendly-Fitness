@@ -6,6 +6,7 @@ import { client } from "../sanityClient";
 import BlockContent from "@sanity/block-content-to-react";
 import newImg1 from "../assets/newImg1.jpg"
 import newImg2 from "../assets/newImg2.jpg"
+import Img11 from "../assets/IMG-11.jpg"
 
 
 const About: React.FC = () => {
@@ -126,7 +127,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Dynamic Content */}
-            <div className="space-y-4 sm:space-y-6 text-gray-600">
+            <div className="space-y-4 sm:space-y-6 text-gray-600 ">
               {about?.body ? (
                 <BlockContent
                   blocks={about.body}
