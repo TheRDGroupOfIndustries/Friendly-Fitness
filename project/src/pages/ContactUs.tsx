@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import emailjs from "@emailjs/browser"; 
 const API_URL = import.meta.env.VITE_API_URL;
 
+
 console.log("API_URL in contact us",API_URL)
 const ContactUs: React.FC = () => {
 const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const [formData, setFormData] = useState({
     console.log("Handle submit is called ")
     setLoading(true);
 
-    // 2. Define your IDs (It's better to put these in .env later)
+   
     const SERVICE_ID = "service_04i5dic"; 
     const ADMIN_TEMPLATE_ID = "template_ay3ly0a"; 
     const USER_TEMPLATE_ID = "template_za4i3oj";
@@ -33,7 +34,6 @@ const [formData, setFormData] = useState({
 
     try {
       // 3. Send to Admin and User simultaneously
-      // We use emailjs.send instead of sendForm since we are using state
       const adminPromise = emailjs.send(
         SERVICE_ID,
         ADMIN_TEMPLATE_ID,
@@ -43,7 +43,7 @@ const [formData, setFormData] = useState({
           phone: formData.phone,
           interest: formData.interest,
           message: formData.message,
-          reply_to: formData.email, // Useful for admin to reply directly
+          reply_to: formData.email, 
         },
         PUBLIC_KEY
       );

@@ -6,7 +6,7 @@ import { client } from "../sanityClient";
 import BlockContent from "@sanity/block-content-to-react";
 import newImg1 from "../assets/newImg1.jpg"
 import newImg2 from "../assets/newImg2.jpg"
-import Img11 from "../assets/IMG-11.jpg"
+import newImg4 from "../assets/newImg4.jpg"
 
 
 const About: React.FC = () => {
@@ -97,7 +97,7 @@ const About: React.FC = () => {
             <div className="space-y-3 sm:space-y-5">
               <img
                 // src={about?.image1?.asset?.url || Img2}
-                src={newImg1}
+                src={newImg4}
                 alt="Gym Equipment"
                 className="w-full h-auto xs:h-44 sm:h-64 md:h-72 lg:h-auto object-contain rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
               />
@@ -107,7 +107,7 @@ const About: React.FC = () => {
                 // src={about?.image2?.asset?.url || Img1}
                 src={newImg2}
                 alt="Athletic Training"
-                className="w-full h-36 xs:h-44 sm:h-64 md:h-72 lg:h-auto object-conatain rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto xs:h-44 sm:h-64 md:h-72 lg:h-auto object-conatain rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>

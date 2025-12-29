@@ -113,7 +113,7 @@ const FitnessAppPromo = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
-                href="https://play.google.com/store/apps/details?id=com.fitness.evolution"
+                href="https://play.google.com/store/apps/details?id=com.vikram.fitnessevolution"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 sm:space-x-3 bg-black/50 backdrop-blur-sm hover:bg-black/70 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg border border-white/20 transition-all duration-300 transform hover:scale-105"
