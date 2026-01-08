@@ -35,7 +35,7 @@ function Home() {
       {/* <Trainers /> */}
       <VideoSection />
       <ClientReviews />
-      <Membership />
+      {/* <Membership /> */}
       {/* <Schedule /> */}
       <FitnessAppPromo/>
       <BMI />
