@@ -3,7 +3,15 @@ import { client } from "../sanityClient";
 import { useNavigate } from "react-router-dom";
 
 const OurBlog: React.FC = () => {
-  const [blogPosts, setBlogPosts] = useState([]);
+
+  interface BlogPost {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  mainImage: { asset: { url: string } };
+  body: any[];
+  }  
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +29,12 @@ const OurBlog: React.FC = () => {
       .catch(console.error);
   }, []);
 
-  const getShortText = (body) => {
+  interface BlogBodyBlock {
+  _type: string;
+  children: Array<{ text: string }>;
+}
+
+  const getShortText = (body: BlogBodyBlock[]) => {
     if (!body) return "";
     const textBlocks = body
       .filter((block) => block._type === "block")

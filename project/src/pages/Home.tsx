@@ -10,7 +10,7 @@ import ClientReviews from '../components/ClientReviews';
 import OurBlog from '../components/OurBlog';
 // import GoogleMap from '../components/GoogleMap';
 import Contact from '../components/Contact';
-import Membership from '../components/Membership';
+// import Membership from '../components/Membership';
 import BMI from '../components/BMI';
 import FitnessAppPromo from '../components/FitnessAppPromo';
 
