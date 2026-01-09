@@ -1,6 +1,7 @@
 import React from "react";
 import { User, MessageSquareQuote } from "lucide-react"; 
 import SocialProofGallery from '../components/SocialProofGallery';
+import ClientReviews from '../components/ClientReviews';
 
 
 const testimonials = [
@@ -97,6 +98,7 @@ const Testimonial: React.FC = () => (
       </div>
     </section>
     <SocialProofGallery/>
+    <ClientReviews/>
   </div>
   
 );
