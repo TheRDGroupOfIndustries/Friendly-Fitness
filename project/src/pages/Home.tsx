@@ -13,6 +13,7 @@ import Contact from '../components/Contact';
 // import Membership from '../components/Membership';
 import BMI from '../components/BMI';
 import FitnessAppPromo from '../components/FitnessAppPromo';
+// import SocialProofGallery from '../components/SocialProofGallery';
 
 function Home() {
   return (
@@ -35,6 +36,7 @@ function Home() {
       {/* <Trainers /> */}
       <VideoSection />
       <ClientReviews />
+      {/* <SocialProofGallery/> */}
       {/* <Membership /> */}
       {/* <Schedule /> */}
       <FitnessAppPromo/>

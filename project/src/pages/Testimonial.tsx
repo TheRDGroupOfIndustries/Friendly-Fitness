@@ -1,5 +1,6 @@
 import React from "react";
 import { User, MessageSquareQuote } from "lucide-react"; 
+import SocialProofGallery from '../components/SocialProofGallery';
 
 
 const testimonials = [
@@ -95,7 +96,9 @@ const Testimonial: React.FC = () => (
         </div>
       </div>
     </section>
+    <SocialProofGallery/>
   </div>
+  
 );
 
 export default Testimonial;
