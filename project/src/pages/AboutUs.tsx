@@ -94,11 +94,11 @@ const AboutUs: React.FC = () => {
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center bg-black">
-        <img
+        {/* <img
           src={Img9}
           alt="About Us Hero"
           className="absolute inset-0 w-full h-full object-cover opacity-60"
-        />
+        /> */}
         <div className="relative z-10 text-center text-white w-full px-4">
           <div className="flex flex-col items-center justify-center h-full">
             <div className="flex items-center justify-center mb-2">

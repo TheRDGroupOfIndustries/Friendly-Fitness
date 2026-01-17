@@ -10,14 +10,14 @@ interface Course {
 }
 
 const Courses: React.FC = () => {
-  const hardcodedCourses: Course[] = [
+const hardcodedCourses: Course[] = [
     {
       id: 1,
       title: "CROSSFIT",
       image:
-        "https://images.pexels.com/photos/416717/pexels-photo-416717.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/1552101/pexels-photo-1552101.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
-        "Build functional strength and endurance with dynamic kettlebell movements.",
+        "Build functional strength and endurance with dynamic high-intensity CrossFit training.",
     },
     {
       id: 2,
@@ -25,39 +25,39 @@ const Courses: React.FC = () => {
       image:
         "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
-        "Advanced training methodology combining max effort and dynamic effort work.",
+        "Master kettlebell movements to improve strength, balance, and endurance.",
     },
     {
       id: 3,
       title: "STRENGTH TRAINING",
       image:
-        "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg",
+        "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
-        "Master the art of kettlebell training for total body conditioning.",
+        "Increase muscle strength and power through structured resistance training.",
     },
     {
       id: 4,
       title: "MEDITATION",
       image:
-        "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
-        "Olympic weightlifting techniques for explosive power development.",
+        "Calm your mind and improve focus through guided meditation practices.",
     },
     {
       id: 5,
       title: "RECOVERY",
       image:
-        "https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
-        "Develop flexibility, strength, and coordination through gymnastics movements.",
+        "Enhance muscle recovery and flexibility with restorative techniques.",
     },
     {
       id: 6,
       title: "PRANAYAM",
       image:
-        "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/3822727/pexels-photo-3822727.jpeg?auto=compress&cs=tinysrgb&w=600",
       description:
-        "Learn striking techniques while building cardiovascular endurance.",
+        "Practice controlled breathing techniques to improve mental and physical health.",
     },
   ];
 

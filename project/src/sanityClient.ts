@@ -1,27 +1,18 @@
-// src/sanityClient.ts
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
-import type { Any, SanityClient } from "@sanity/client";
-// import type { ImageUrlBuilder } from "@sanity/image-url";
 
-const token =
-  "skno9HTs1HgG3QUDd2hyX0KVKucYSJyDx1s7s4727CR2mnff8xhNGlZHJk0DeJGqQG1zptmrFUjckUXjX0X0u4MYv7w5BOzVGBDUerw81qMmihE0e3NGTlh2pjNUUlKDSov6YCMmbR6csALc00oOdBQGcYtlWgWG2m8EaFNz7psAwhVr0CA8";
-
-export const client: SanityClient = createClient({
-  projectId: "bg45uhs5",
+// Public client for fetching data (Safe to use in React)
+export const client = createClient({
+  projectId: "m909wrdy", // Your NEW Project ID
   dataset: "production",
-  useCdn: false,
-  apiVersion: "2023-07-17",
+  useCdn: true, // Faster response time for users
+  apiVersion: "2026-01-17", // Today's date
+  // token: NEVER put a token here for a frontend-only app
 });
 
-export const secureClient: SanityClient = createClient({
-  projectId: "bg45uhs5",
-  dataset: "production",
-  token,
-  useCdn: false,
-  apiVersion: "2023-07-17",
-});
-
+// Image Builder Helper
 const builder = imageUrlBuilder(client);
 
-export const urlFor = (source: Any) => builder.image(source);
+export const urlFor = (source: any) => {
+  return builder.image(source);
+};
