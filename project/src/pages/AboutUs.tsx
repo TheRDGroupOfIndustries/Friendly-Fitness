@@ -108,9 +108,9 @@ const AboutUs: React.FC = () => {
               </h1>
               <span className="block w-8 h-1 bg-orange-500 ml-2 "></span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-light mt-2 text-white">
+            {/* <h2 className="text-2xl md:text-3xl font-light mt-2 text-white">
               BUILDING A COMMUNITY OF ATHLETIC  
-            </h2>
+            </h2> */}
           </div>
         </div>
       </section>
@@ -144,7 +144,7 @@ const AboutUs: React.FC = () => {
           </div>
           <div className="space-y-6 text-gray-600 leading-relaxed">
             {about?.body && (
-              <BlockContent
+              <BlockContent 
                 blocks={about.body}
                 serializers={serializers}
                 projectId={client.config().projectId}

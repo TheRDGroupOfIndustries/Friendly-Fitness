@@ -8,54 +8,54 @@ function urlFor(source: any) {
   return builder.image(source);
 }
 
-// Static fallback data
+// Static fallback data with SPECIFIC images matching the title
 const staticCourses = [
   {
     title: "CROSSFIT",
     image:
-      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg",
+      "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "S & C",
   },
   {
     title: "KETTLEBELL WORKOUT",
     image:
-      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "S & C",
   },
   {
     title: "STRENGTH TRAINING",
     image:
-      "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg",
+      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "S & C",
   },
   {
     title: "MEDITATION",
     image:
-      "https://images.pexels.com/photos/416717/pexels-photo-416717.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "YOGA",
   },
   {
     title: "RECOVERY",
     image:
-      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "YOGA",
   },
   {
     title: "PRANAYAM",
     image:
-      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3820381/pexels-photo-3820381.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "YOGA",
   },
   {
     title: "HATHA YOGA",
     image:
-      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3822166/pexels-photo-3822166.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "YOGA",
   },
   {
     title: "HIIT",
     image:
-      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "CARDIO",
   },
   {
@@ -67,22 +67,21 @@ const staticCourses = [
   {
     title: "INDOOR CARDIO",
     image:
-      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/703014/pexels-photo-703014.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "CARDIO",
   },
   {
     title: "BODY MOVEMENTS",
     image:
-      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1552103/pexels-photo-1552103.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "CARDIO",
   },
   {
     title: "FAT LOSS/ WEIGHT LOSS",
     image:
-      "https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3775603/pexels-photo-3775603.jpeg?auto=compress&cs=tinysrgb&w=600",
     category: "CARDIO",
   },
-  
 ];
 
 const Courses: React.FC = () => {
@@ -92,7 +91,7 @@ const Courses: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch categories
+    // Fetch categories from Sanity
     client
       .fetch(`*[_type == "courseCategory"]{title}`)
       .then((cats) => {
@@ -100,10 +99,10 @@ const Courses: React.FC = () => {
         setCategories(categoryList);
       })
       .catch(() => {
-        setCategories(["ALL"]); // fallback if error
+        setCategories(["ALL"]); // Fallback if API fails
       });
 
-    // Fetch courses
+    // Fetch courses from Sanity
     client
       .fetch(
         `*[_type == "course"]| order(_createdAt asc){
@@ -118,12 +117,13 @@ const Courses: React.FC = () => {
         if (data.length > 0) {
           setCourses(data);
         } else {
-          setCourses(staticCourses); // fallback
+          setCourses(staticCourses); // Use new diverse images if DB is empty
         }
         setLoading(false);
       })
-      .catch(() => {
-        setCourses(staticCourses); // in case of error also fallback
+      .catch((err) => {
+        console.error("Using static fallback due to error:", err);
+        setCourses(staticCourses);
         setLoading(false);
       });
   }, []);
@@ -134,7 +134,7 @@ const Courses: React.FC = () => {
       : courses.filter(
           (course) =>
             course.courseCategory?.title === selectedCategory ||
-            course.category === selectedCategory // fallback for static data
+            course.category === selectedCategory // fallback logic
         );
 
   return (
