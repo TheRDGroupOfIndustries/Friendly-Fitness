@@ -223,7 +223,7 @@ const Courses: React.FC = () => {
           <br />
           Pay Now &amp; GET 35% Discount
         </h2>
-        <Link to="/aboutus">
+        <Link to="/contact">
           <button className="mt-4 px-10 py-4 rounded-full border-2 border-white text-white bg-transparent font-bold text-lg hover:bg-white hover:text-orange-500 transition-all duration-300">
             Read More
           </button>

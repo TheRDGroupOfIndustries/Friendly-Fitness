@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Smile, Dumbbell, Coffee, Award ,User} from "lucide-react";
 // import Trainers from "../components/Trainers";
-import Img9 from "../assets/IMG-9.jpg";
+// import Img9 from "../assets/IMG-9.jpg";
 import Img11 from "../assets/IMG-11.jpg";
 import { useNavigate } from "react-router-dom";
 import { client } from "../sanityClient";
