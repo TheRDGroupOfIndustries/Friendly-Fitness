@@ -1,38 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { client } from "../sanityClient";
+import { client, urlFor } from "../sanityClient";
 import { useNavigate } from "react-router-dom";
 
 const OurBlog: React.FC = () => {
-
   interface BlogPost {
-  _id: string;
-  title: string;
-  slug: { current: string };
-  mainImage: { asset: { url: string } };
-  body: any[];
-  }  
+    _id: string;
+    title: string;
+    slug: { current: string };
+    mainImage: any; 
+    body: any[];
+  }
+
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "blog"] | order(publishedAt desc)[0...6]{
+    const query = `*[_type == "post"] | order(publishedAt desc)[0...6]{
           _id,
           title,
           slug,
-          mainImage{asset->{url}},
+          mainImage, 
           body
-        }`
-      )
+        }`;
+
+    client
+      .fetch(query)
       .then((data) => setBlogPosts(data))
       .catch(console.error);
   }, []);
 
   interface BlogBodyBlock {
-  _type: string;
-  children: Array<{ text: string }>;
-}
+    _type: string;
+    children: Array<{ text: string }>;
+  }
 
   const getShortText = (body: BlogBodyBlock[]) => {
     if (!body) return "";
@@ -79,12 +79,19 @@ const OurBlog: React.FC = () => {
             {/* Image Container */}
             <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
               <img
-                src={post?.mainImage?.asset?.url}
+                // UPDATED: Uses urlFor to generate the correct image URL
+                src={
+                  post.mainImage
+                    ? urlFor(post.mainImage).width(600).url()
+                    : "https://via.placeholder.com/600x400?text=No+Image"
+                }
                 alt={post?.title}
                 className="w-full h-full object-cover"
                 style={{
-                  clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
-                  WebkitClipPath: "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
+                  clipPath:
+                    "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
+                  WebkitClipPath:
+                    "polygon(20% 0, 100% 0, 100% 100%, 0% 100%, 0 20%)",
                 }}
               />
             </div>
