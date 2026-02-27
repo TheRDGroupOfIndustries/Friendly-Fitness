@@ -16,7 +16,7 @@ const videoTestimonials = [
   { id: 5, name: "Falak", publicId: "video5" },
   { id: 6, name: "Shyamshri", publicId: "video6" },
   { id: 7, name: "Shubham", publicId: "video7" },
-  { id: 8, name: "-", publicId: "video8" },
+  { id: 8, name: "Atul", publicId: "video8" },
 ];
 
 const ClientVideoReviews: React.FC = () => {
