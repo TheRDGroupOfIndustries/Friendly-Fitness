@@ -15,7 +15,7 @@ const hardcodedCourses: Course[] = [
       id: 1,
       title: "CROSSFIT",
       image:
-        "https://images.pexels.com/photos/1552101/pexels-photo-1552101.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/3253498/pexels-photo-3253498.jpeg",
       description:
         "Build functional strength and endurance with dynamic high-intensity CrossFit training.",
     },
@@ -23,7 +23,7 @@ const hardcodedCourses: Course[] = [
       id: 2,
       title: "KETTLEBELL WORKOUT",
       image:
-        "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/28636772/pexels-photo-28636772.png",
       description:
         "Master kettlebell movements to improve strength, balance, and endurance.",
     },
@@ -31,28 +31,20 @@ const hardcodedCourses: Course[] = [
       id: 3,
       title: "STRENGTH TRAINING",
       image:
-        "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/2204196/pexels-photo-2204196.jpeg",
       description:
         "Increase muscle strength and power through structured resistance training.",
     },
     {
       id: 4,
-      title: "MEDITATION",
-      image:
-        "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=600",
-      description:
-        "Calm your mind and improve focus through guided meditation practices.",
-    },
-    {
-      id: 5,
       title: "RECOVERY",
       image:
-        "https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/20860624/pexels-photo-20860624.jpeg",
       description:
         "Enhance muscle recovery and flexibility with restorative techniques.",
     },
     {
-      id: 6,
+      id: 5,
       title: "PRANAYAM",
       image:
         "https://images.pexels.com/photos/3822727/pexels-photo-3822727.jpeg?auto=compress&cs=tinysrgb&w=600",

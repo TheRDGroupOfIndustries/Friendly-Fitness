@@ -13,31 +13,25 @@ const staticCourses = [
   {
     title: "CROSSFIT",
     image:
-      "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3253498/pexels-photo-3253498.jpeg",
     category: "S & C",
   },
   {
     title: "KETTLEBELL WORKOUT",
     image:
-      "https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/28636772/pexels-photo-28636772.png",
     category: "S & C",
   },
   {
     title: "STRENGTH TRAINING",
     image:
-      "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/2204196/pexels-photo-2204196.jpeg",
     category: "S & C",
-  },
-  {
-    title: "MEDITATION",
-    image:
-      "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=600",
-    category: "YOGA",
   },
   {
     title: "RECOVERY",
     image:
-      "https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/20860624/pexels-photo-20860624.jpeg",
     category: "YOGA",
   },
   {
