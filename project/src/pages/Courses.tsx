@@ -13,7 +13,7 @@ const staticCourses = [
   {
     title: "CROSSFIT",
     image:
-      "https://images.pexels.com/photos/3253498/pexels-photo-3253498.jpeg",
+      "https://images.pexels.com/photos/2294400/pexels-photo-2294400.jpeg",
     category: "S & C",
   },
   {
@@ -61,7 +61,7 @@ const staticCourses = [
   {
     title: "INDOOR CARDIO",
     image:
-      "https://images.pexels.com/photos/703014/pexels-photo-703014.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/6339345/pexels-photo-6339345.jpeg",
     category: "CARDIO",
   },
   {

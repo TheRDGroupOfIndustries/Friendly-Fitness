@@ -15,7 +15,7 @@ const hardcodedCourses: Course[] = [
       id: 1,
       title: "CROSSFIT",
       image:
-        "https://images.pexels.com/photos/3253498/pexels-photo-3253498.jpeg",
+        "https://images.pexels.com/photos/2294400/pexels-photo-2294400.jpeg",
       description:
         "Build functional strength and endurance with dynamic high-intensity CrossFit training.",
     },
