@@ -52,9 +52,29 @@ const BlogDetail = () => {
 
   // const [comments, setComments] = useState([]);
 
-  const fetchBlog = async () => {
+  // const fetchBlog = async () => {
+  //   try {
+  //     // 1️⃣ Fetch post by slug
+  //     const postData = await client.fetch(
+  //       `*[_type == "blog" && slug.current == $slug][0]{
+  //       _id,
+  //       title,
+  //       publishedAt,
+  //       author->{name},
+  //       mainImage{asset->{url}},
+  //       body,
+  //       tags
+  //     }`,
+  //       { slug }
+  //     );
+
+  //     setPost(postData);
+  //   } catch (err) {
+  //     console.error("Error loading blog post or comments", err);
+  //   }
+  // };
+    const fetchBlog = async () => {
     try {
-      // 1️⃣ Fetch post by slug
       const postData = await client.fetch(
         `*[_type == "blog" && slug.current == $slug][0]{
         _id,
@@ -63,16 +83,16 @@ const BlogDetail = () => {
         author->{name},
         mainImage{asset->{url}},
         body,
-        tags
+        tags // <-- UPDATE THIS LINE
       }`,
         { slug }
       );
-
       setPost(postData);
     } catch (err) {
-      console.error("Error loading blog post or comments", err);
+      console.error("Error loading blog post", err);
     }
   };
+
 
   useEffect(() => {
     fetchBlog();
@@ -173,15 +193,19 @@ const BlogDetail = () => {
                   </div>
 
                   {/* Tags */}
-                  <span className="singletags">
-                    Tags:{" "}
-                    {post.tags?.map((tag, i) => (
-                      <span key={i}>
-                        <a href={`#tag-${tag}`}>{tag}</a>
-                        {i !== post.tags.length - 1 ? ", " : ""}
-                      </span>
-                    ))}
-                  </span>
+{/* Tags */}
+{post.tags && post.tags.length > 0 && (
+  <span className="singletags">
+    Tags:{" "}
+    {post.tags.map((tag, i) => (
+      <span key={i}>
+        <a href={`#tag-${tag}`}>{tag}</a>
+        {i !== post.tags.length - 1 ? ", " : ""}
+      </span>
+    ))}
+  </span>
+)}
+
                   {/* Post nav  */}
                   <div className="clearfix mbottom30"></div>
                   <div className="clearfix"></div>
