@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ScrollToTop from "../components/ScrollToTop";
-import Img3 from "../assets/IMG-3.jpg";
+import blogImage from "../assets/blogImage.png";
 import { client } from "../sanityClient";
 import { Link } from "react-router-dom";
 
@@ -60,21 +60,26 @@ const Blog: React.FC = () => {
   return (
     <div className="bg-white min-h-screen flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[350px] md:h-[400px] flex items-center justify-center overflow-hidden">
-        <img
-          src={Img3}
-          alt="Blog Hero"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/70"></div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
-            BLOG
-          </h1>
-         
-        </div>
-      </section>
+      <section className="relative h-[350px] md:h-[400px] w-full flex items-center justify-center overflow-hidden">
+  
+  {/* Background Image */}
+  <img
+    src={blogImage}
+    alt="Blog Hero"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
 
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/60"></div>
+
+  {/* Overlay Text */}
+  <div className="relative z-10 text-center text-white/70 tracking-[4px] font-semibold">
+    <h2 className="inline-block mx-3 text-lg md:text-2xl text-white">DISCIPLINE</h2>
+    <h2 className="inline-block mx-3 text-lg md:text-2xl text-white">RESILIENCE</h2>
+    <h2 className="inline-block mx-3 text-lg md:text-2xl text-white">TRANSFORMATION</h2>
+  </div>
+
+</section>
       {/* Main Blog Content */}
       <section className="max-w-7xl mx-auto px-4 py-16 flex flex-col w-full flex-1">
         {/*  Search Bar */}
