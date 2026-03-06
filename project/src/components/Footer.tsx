@@ -71,7 +71,6 @@ const Footer = () => {
                 "CrossFit",
                 "Kettlebell Workout",
                 "Strength Training",
-                "Meditation",
                 "Recovery",
                 "Pranayam",
                 "Hatha Yoga",

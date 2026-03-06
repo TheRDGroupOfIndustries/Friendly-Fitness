@@ -10,81 +10,24 @@ import "../assets/css/animate.css";
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { client, secureClient } from "../sanityClient";
+import { client } from "../sanityClient";
 
 const BlogDetail = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
-  // const [submitted, setSubmitted] = useState(false);
-  // const [form, setForm] = useState({
-  //   name: "",
-  //   email: "",
-  //   message: "",
-  //   website: "",
-  // });
 
-  // const handleChange = (e) =>
-  //   setForm({ ...form, [e.target.name]: e.target.value });
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     await secureClient.create({
-  //       _type: "comment",
-  //       name: form.name,
-  //       email: form.email,
-  //       message: form.message,
-  //       website: form.website || "",
-  //       post: {
-  //         _type: "reference",
-  //         _ref: post?._id,
-  //       },
-  //       createdAt: new Date().toISOString(),
-  //     });
-
-  //     setSubmitted(true);
-  //     await fetchBlog();
-  //   } catch (err) {
-  //     console.log("ERror Adding Comment", err);
-  //   }
-  // };
-
-  // const [comments, setComments] = useState([]);
-
-  // const fetchBlog = async () => {
-  //   try {
-  //     // 1️⃣ Fetch post by slug
-  //     const postData = await client.fetch(
-  //       `*[_type == "blog" && slug.current == $slug][0]{
-  //       _id,
-  //       title,
-  //       publishedAt,
-  //       author->{name},
-  //       mainImage{asset->{url}},
-  //       body,
-  //       tags
-  //     }`,
-  //       { slug }
-  //     );
-
-  //     setPost(postData);
-  //   } catch (err) {
-  //     console.error("Error loading blog post or comments", err);
-  //   }
-  // };
-    const fetchBlog = async () => {
+  const fetchBlog = async () => {
     try {
       const postData = await client.fetch(
         `*[_type == "blog" && slug.current == $slug][0]{
-        _id,
-        title,
-        publishedAt,
-        author->{name},
-        mainImage{asset->{url}},
-        body,
-        tags // <-- UPDATE THIS LINE
-      }`,
+          _id,
+          title,
+          publishedAt,
+          author->{name},
+          mainImage{asset->{url}},
+          body,
+          tags
+        }`,
         { slug }
       );
       setPost(postData);
@@ -92,7 +35,6 @@ const BlogDetail = () => {
       console.error("Error loading blog post", err);
     }
   };
-
 
   useEffect(() => {
     fetchBlog();
@@ -106,33 +48,57 @@ const BlogDetail = () => {
 
   return (
     <>
-      {/* /blog start */}
       <div className="blog_main_sec">
         <div className="container">
           <div className="row">
             <div>
               <div className="ft-blog-post">
                 <div className="main-content">
-                  <div className="single-blog-post clearfix post-2245 post type-post status-publish format-standard has-post-thumbnail hentry category-cardio-fitness-course-offer category-gym-fitness tag-donec tag-pretium tag-quam tag-ultricies">
-                    {/* loop starts */}
+                  <div className="single-blog-post clearfix post-2245 post type-post status-publish format-standard has-post-thumbnail hentry category-cardio-fitness-course-offer category-gym-fitness">
 
-                    {/* TT-BLOG */}
-                    <div className="image">
-                      {post?.mainImage && (
-                       <img
-                          className="img-responsive wp-post-image"
-                          src={post?.mainImage?.asset?.url}
-                          alt={post.title}
-                          style={{
-                            width: "100%",
-                            height: "auto",
-                            aspectRatio: "16/9",
-                            objectFit: "cover",
-                          }}
-                        />
-
-                      )}
+                    {/* ✅ HERO IMAGE — Fixed & Responsive */}
+                    <div 
+                      className="image" 
+                      style={{ 
+                        display: "flex", 
+                        justifyContent: "center", 
+                        marginBottom: "30px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "100%",
+                          maxWidth: "600px", 
+                          aspectRatio: "1 / 1", // Keeps the container square
+                          overflow: "hidden",
+                          borderRadius: "12px",
+                          boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+                          backgroundColor: "#f9f9f9", // Adds a light background in case the image doesn't fill the square perfectly
+                          display: "flex", // Centers the image inside the square
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {post?.mainImage && (
+                          <img
+                            className="img-responsive wp-post-image"
+                            src={post?.mainImage?.asset?.url}
+                            alt={post.title}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "contain", 
+                              display: "block",
+                            }}
+                          />
+                        )}
+                      </div>
                     </div>
+
+
+
+
+                    {/* Post Meta */}
                     <div className="info">
                       <div className="date-wrapper">
                         <div className="date">
@@ -146,24 +112,23 @@ const BlogDetail = () => {
                         </div>
                         <div className="info">
                           <p>
-                            {" "}
                             <span>
-                              {" "}
                               <i className="fa fa-user"></i> By:{" "}
                               <a
                                 href="#"
-                                title="Visit templatation’s website"
+                                title="Visit author's website"
                                 rel="author external"
                               >
                                 {post?.author?.name}
-                              </a>{" "}
-                            </span>{" "}
+                              </a>
+                            </span>
                           </p>
                         </div>
                       </div>
                     </div>
-                    {/* Post content */}
-                    <div className="main-content-box">
+
+                    {/* Post Body Content */}
+                    <div className="main-content-box" style={{ marginTop: "20px" }}>
                       {post.body &&
                         post.body.map((block, index) => {
                           if (block._type === "block") {
@@ -175,14 +140,23 @@ const BlogDetail = () => {
                               </p>
                             );
                           }
-                                                  if (block._type === "image") {
+
+                          // ✅ Inline body images also constrained
+                          if (block._type === "image") {
                             return (
                               <img
                                 key={index}
                                 src={block.asset?.url}
                                 alt={`blog-img-${index}`}
                                 className="img-responsive"
-                                style={{ width: "100%", height: "auto", margin: "20px 0" }}
+                                style={{
+                                  width: "100%",
+                                  maxHeight: "400px",
+                                  height: "auto",
+                                  objectFit: "cover",
+                                  borderRadius: "8px",
+                                  margin: "20px 0",
+                                }}
                               />
                             );
                           }
@@ -193,31 +167,26 @@ const BlogDetail = () => {
                   </div>
 
                   {/* Tags */}
-{/* Tags */}
-{post.tags && post.tags.length > 0 && (
-  <span className="singletags">
-    Tags:{" "}
-    {post.tags.map((tag, i) => (
-      <span key={i}>
-        <a href={`#tag-${tag}`}>{tag}</a>
-        {i !== post.tags.length - 1 ? ", " : ""}
-      </span>
-    ))}
-  </span>
-)}
+                  {post.tags && post.tags.length > 0 && (
+                    <span className="singletags">
+                      Tags:{" "}
+                      {post.tags.map((tag, i) => (
+                        <span key={i}>
+                          <a href={`#tag-${tag}`}>{tag}</a>
+                          {i !== post.tags.length - 1 ? ", " : ""}
+                        </span>
+                      ))}
+                    </span>
+                  )}
 
-                  {/* Post nav  */}
                   <div className="clearfix mbottom30"></div>
                   <div className="clearfix"></div>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* blog end */}
     </>
   );
 };
