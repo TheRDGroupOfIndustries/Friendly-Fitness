@@ -162,7 +162,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-10 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 gap-4">
-          <p>© 2025 Fitness Evolution. All rights reserved.</p>
+          <p>© 2026 Fitness Evolution. All rights reserved.</p>
           <div className="flex space-x-6">
             <Link
               to="/privacypolicy"
