@@ -231,8 +231,7 @@ const AboutUs: React.FC = () => {
           </div>
           <h3 className="text-2xl text-gray-800 mb-4">WHAT CLIENT'S SAY</h3>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            porttitor egestas orci, vitae at velit vestibulum.
+           Real stories. Real results. Our members share their journeys of strength, confidence, and transformation—proof that Fitness Evolution is more than a workout, it’s a community that inspires lasting change
           </p>
         </div>
 
