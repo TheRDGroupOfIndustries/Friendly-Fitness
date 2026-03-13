@@ -69,7 +69,8 @@ const OurBlog: React.FC = () => {
             </h2>
           </div>
           <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-light uppercase text-black tracking-wide text-left md:text-center mb-8 xs:mb-10 sm:mb-12 px-2">
-            Building a community of athletic women
+            Building a community for every individual
+
           </h3>
         </div>
       </div>
@@ -124,3 +125,4 @@ const OurBlog: React.FC = () => {
 };
 
 export default OurBlog;
+
